@@ -1,5 +1,5 @@
 # Socializd
-!["logo"]("./public/images/Screenshot_2019-08-22_18-25-45.png")
+!["logo"]("https://github.com/declan-wu/socializd/blob/master/public/images/Screenshot_2019-08-22_18-25-45.png")
 Socializd is developed in Node.js with Express for backend, and using EJS, Jquery and Ajax to render HTML/CSS page for front end. 
 
 ## Progress

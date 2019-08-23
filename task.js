@@ -39,29 +39,29 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 // TODO: TEST FUNCTIONS:
 const testInsert = () => {
-  console.log("Port is ", PORT);
-  const admin_id = 4;
-  const create_date = moment().format("YYYY-MM-DD HH:mm:ss");
-  const title = "poll_A";
-  const values = [admin_id, create_date, title];
-  // const queryString = `
-  //     select * from users;`;
-  // const queryString = `
-  //     INSERT INTO polls (admin_id, create_date, title)
-  //     VALUES ($1, $2, $3)
-  //     RETURNING *`;
-  db.query(`SELECT * FROM voters;`)
+  const admin_id = 1;
+  const created_date = moment().format("YYYY-MM-DD");
+  const title = "test_poll";
+  const values = [admin_id, created_date, title];
+  const queryString = `
+      INSERT INTO polls (admin_id, created_date, title)
+      VALUES ($1, $2, $3)
+      RETURNING * ;`;
+  db.query(queryString, values)
     .then(data => {
+      // data.rows[0] returns an object of form:
+      // {id: 5,
+      //  admin_id: 1,
+      //  created_date: 2019 - 08 - 23T04: 00: 00.000Z,
+      //  title: 'test_poll'}
       console.log(data.rows[0]);
     })
     .catch(err => {
       console.log(err);
     });
-  return;
 };
 testInsert();
 
-Port;
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

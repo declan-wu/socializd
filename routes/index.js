@@ -14,17 +14,16 @@ module.exports = db => {
     const options = req.body;
     // TODO: add new poll to polls, creates options accodingly.
     // TODO: figure out what admin id is by session cookie
-    const admin_id = 0;
-    const create_date = Date.now();
-    const title = "poll_A";
-    const values = [admin_id, create_date, title];
+    const admin_id = 1;
+    const created_date = moment().format("YYYY-MM-DD");
+    const title = "test_poll";
+    const values = [admin_id, created_date, title];
     const queryString = `
-      INSERT INTO polls (admin_id, create_date, title)
+      INSERT INTO polls (admin_id, created_date, title)
       VALUES ($1, $2, $3)
-      RETURNING *`;
+      RETURNING * ;`;
     db.query(queryString, values)
       .then(data => {
-        // FIXME: what does data look like?
         const poll_id = data.rows[0].id;
         // res.json({ users });
         // TODO: generate a link "/poll/poll_id"

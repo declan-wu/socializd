@@ -8,6 +8,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
+const moment = require("moment");
 const morgan = require("morgan");
 
 // PG database client/connection setup
@@ -36,20 +37,31 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const indexRoutes = requrie("./routes/index");
-const pollRoutes = requrie("./routes/poll");
-const resultRoutes = requrie("./routes/result");
+// TODO: TEST FUNCTIONS:
+const testInsert = () => {
+  console.log("Port is ", PORT);
+  const admin_id = 4;
+  const create_date = moment().format("YYYY-MM-DD HH:mm:ss");
+  const title = "poll_A";
+  const values = [admin_id, create_date, title];
+  // const queryString = `
+  //     select * from users;`;
+  // const queryString = `
+  //     INSERT INTO polls (admin_id, create_date, title)
+  //     VALUES ($1, $2, $3)
+  //     RETURNING *`;
+  db.query(`SELECT * FROM voters;`)
+    .then(data => {
+      console.log(data.rows[0]);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  return;
+};
+testInsert();
 
-// Home page
-app.use("/", indexRoutes(db));
-
-// Submission page
-app.use("/poll", pollRoutes(db));
-
-// Result page
-app.use("/result", resultRoutes(db));
-
-// Port
+Port;
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

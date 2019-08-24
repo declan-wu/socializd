@@ -1,5 +1,6 @@
 const express = require("express");
 const moment = require("moment");
+const sendEmail = require("../util/sendEmail");
 const router = express.Router();
 
 module.exports = db => {
@@ -28,7 +29,9 @@ module.exports = db => {
         // res.json({ users });
         // TODO: generate a link "/poll/poll_id"
         // TODO: redirect to GET link, or serving data to Ajax to render another apge. (includes copy button)
-        // TODO: Mailgun, send links to admin.
+        sendEmail(["declan.wu@hotmail.com", "declan.s.wu@gmail.com"]).catch(
+          console.error
+        );
         // TODO: possibly, redirect user to stats page.
       })
       .catch(err => {

@@ -29,10 +29,16 @@ module.exports = db => {
         // res.json({ users });
         // TODO: generate a link "/poll/poll_id"
         // TODO: redirect to GET link, or serving data to Ajax to render another apge. (includes copy button)
+
+        // send email
         sendEmail(["declan.wu@hotmail.com", "declan.s.wu@gmail.com"]).catch(
           console.error
         );
-        // TODO: possibly, redirect user to stats page.
+
+        // send text
+        sendText("hello from node.js");
+
+        res.redirect(303, "/result");
       })
       .catch(err => {
         // FIXME: if failed, meaning database failed, :(

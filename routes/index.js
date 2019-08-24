@@ -1,6 +1,7 @@
 const express = require("express");
 const moment = require("moment");
 const sendEmail = require("../util/sendEmail");
+const sendText = require("../util/sendText");
 const router = express.Router();
 
 module.exports = db => {
@@ -18,12 +19,12 @@ module.exports = db => {
     const admin_id = 1;
     const created_date = moment().format("YYYY-MM-DD");
     const title = "test_poll";
-    const values = [admin_id, created_date, title];
-    const queryString = `
+    const query_params = [admin_id, created_date, title];
+    const query_string = `
       INSERT INTO polls (admin_id, created_date, title)
       VALUES ($1, $2, $3)
       RETURNING * ;`;
-    db.query(queryString, values)
+    db.query(query_string, query_params)
       .then(data => {
         const poll_id = data.rows[0].id;
         // res.json({ users });
@@ -36,7 +37,7 @@ module.exports = db => {
         );
 
         // send text
-        sendText("hello from node.js");
+        // sendText("hello from node.js");
 
         res.redirect(303, "/result");
       })

@@ -34,7 +34,7 @@ CREATE TABLE rankings (
   voter_id integer references voters(id) on delete cascade,
   poll_id integer references polls(id) on delete cascade,
   option_id integer references options(id) on delete cascade,
-  rank text NOT NULL,
+  relative_points decimal NOT NULL,
   PRIMARY KEY (voter_id, poll_id, option_id)
 );
 

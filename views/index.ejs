@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../public/styles/main.css">
+  <title>Socializd -</title>
+</head>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+<!-- TODO: Insert _header and _footer partials -->
 
-  <body>
-    <h1>Welcome to Socializd</h1>
-  </body>
+<body>
+  <div class="pagewrap">
+    <form class="form" id="form" method="POST" action="/">
+      <input class="form__title" type="textarea" placeholder="What Are You Deciding?"></input>
+
+      <input class="form__option" id="option1" type="textarea" placeholder="Option"></input>
+      <input class="form__option" id="option2" type="textarea" placeholder="Option"></input>
+
+      <input class="form__email" id="email" type="textarea" placeholder="@email"></input>
+
+      <div class="form__buttons">
+        <input class="form__submit" id="form__submit" type="button" value="Submit"></input>
+        <input class="form__reset" id="form__reset" type="button" value="Reset"></input>
+      </div>
+
+    </form>
+  </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+<script src="../public/scripts/app.js"></script>
+
+</body>
+
 </html>

@@ -27,7 +27,7 @@ In order to get started with this project, you need to run `npm install` to inst
 8. Visit `http://localhost:8080/`
    
   
-Then navigate to `http://localhost:8080` to view the the TinyApp app. 
+Then navigate to `http://localhost:8080` to view the Socializd app. 
 
 ### Prerequisites
 

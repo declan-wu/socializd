@@ -47,7 +47,7 @@ app.use("/", indexRoutes(db));
 app.use("/poll", pollRoutes(db));
 
 // Result page
-// app.use("/result", resultRoutes(db));
+app.use("/result", resultRoutes(db));
 
 // Port
 app.listen(PORT, () => {

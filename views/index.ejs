@@ -14,15 +14,14 @@
 <body>
   <div class="pagewrap">
     <form class="form" id="form" method="POST" action="/">
-      <input class="form__title" type="textarea" placeholder="What Are You Deciding?"></input>
+      <input class="form__title" id="poll_title" name="poll_title" type="textarea" required="" placeholder="What Are You Deciding?"></input>
 
-      <input class="form__option" id="option1" type="textarea" placeholder="Option"></input>
-      <input class="form__option" id="option2" type="textarea" placeholder="Option"></input>
-
-      <input class="form__email" id="email" type="textarea" placeholder="@email"></input>
+      <input class="form__option" id="option1" name="option_1" type="textarea" placeholder="Option"></input>
+      <input class="form__option" id="option2"  name="option_2" type="textarea" placeholder="Option"></input>
+      <input class="form__email" id="email"  name="email" type="email" required="" placeholder="@email"></input>
 
       <div class="form__buttons">
-        <input class="form__submit" id="form__submit" type="button" value="Submit"></input>
+        <button class="form__submit" id="form__submit" type="submit" form="form"> Submit</button>
         <input class="form__reset" id="form__reset" type="button" value="Reset"></input>
       </div>
 

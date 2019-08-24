@@ -12,13 +12,18 @@ module.exports = db => {
   // POST home page for creating a poll
   router.post("/", (req, res) => {
     // retrieve data from the from
-    // TODO: confirm where to stores the options
-    const options = req.body;
-    // TODO: add new poll to polls, creates options accodingly.
+    const poll_title = req.body.poll_title;
+    const email = req.body.email;
+    const option_names = [];
+    for (let option in req.body) {
+      if (req.body.option.include("option")) {
+        option_names.push(req.body.option);
+      }
+    }
+
     // TODO: figure out what admin id is by session cookie
-    const admin_id = 1;
     const created_date = moment().format("YYYY-MM-DD");
-    const title = "test_poll";
+    const title = req.body.poll_title;
     const query_params = [admin_id, created_date, title];
     const query_string = `
       INSERT INTO polls (admin_id, created_date, title)
@@ -27,22 +32,25 @@ module.exports = db => {
     db.query(query_string, query_params)
       .then(data => {
         const poll_id = data.rows[0].id;
-        // res.json({ users });
-        // TODO: generate a link "/poll/poll_id"
-        // TODO: redirect to GET link, or serving data to Ajax to render another apge. (includes copy button)
+        const option_params = [];
+        const option_string = `INSERT INTO options (poll_id, name) VALUES `;
+        const q_arr = [];
+        for (let option_name of option_names) {
+          query_params.push(option_name);
+          q_arr.push(`( ${poll_id}, $${query_params.length} )`);
+        }
+        option_string += q_arr.join(", ");
+        option_string += ";";
 
-        // send email
-        sendEmail(["declan.wu@hotmail.com", "declan.s.wu@gmail.com"]).catch(
-          console.error
-        );
-
-        // send text
-        // sendText("hello from node.js");
-
-        res.redirect(303, "/result");
+        // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
+        db.query(option_string, option_params);
+        return poll_id;
+      })
+      .then(poll_id => {
+        sendEmail([email], `localhost:8080/poll/${poll_id}`);
+        res.redirect(303, `/result/${poll_id}`);
       })
       .catch(err => {
-        // FIXME: if failed, meaning database failed, :(
         res.status(500).json({ error: err.message });
       });
   });

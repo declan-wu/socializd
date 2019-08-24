@@ -21,35 +21,35 @@ INSERT INTO voters (name, email) VALUES ('Declan', 'declan32491@gmail.com');
 INSERT INTO voters (name, email) VALUES ('Annie', 'annie2191@gmail.com');
 
 -- rankings
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('1','1','1','1');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('1','1','2','3');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('1','1','3','2');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('1','1','4','4');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('1','1','5','5');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('1','1','1','1');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('1','1','2','3');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('1','1','3','2');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('1','1','4','4');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('1','1','5','5');
 
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('2','1','1','3');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('2','1','2','2');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('2','1','3','1');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('2','1','4','4');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('2','1','5','5');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('2','1','1','3');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('2','1','2','2');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('2','1','3','1');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('2','1','4','4');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('2','1','5','5');
 
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('3','1','1','4');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('3','1','2','2');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('3','1','3','3');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('3','1','4','5');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('3','1','5','1');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('3','1','1','4');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('3','1','2','2');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('3','1','3','3');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('3','1','4','5');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('3','1','5','1');
 
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('4','1','1','1');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('4','1','2','3');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('4','1','3','2');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('4','1','4','5');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('4','1','5','4');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('4','1','1','1');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('4','1','2','3');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('4','1','3','2');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('4','1','4','5');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('4','1','5','4');
 
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('5','1','1','3');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('5','1','2','1');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('5','1','3','2');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('5','1','4','5');
-INSERT INTO rankings (voter_id, poll_id, option_id, rank) VALUES ('5','1','5','4');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('5','1','1','3');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('5','1','2','1');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('5','1','3','2');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('5','1','4','5');
+INSERT INTO rankings (voter_id, poll_id, option_id, relative_points) VALUES ('5','1','5','4');
 
 
 

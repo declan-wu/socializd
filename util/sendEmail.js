@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 const sendEmail = async function(
   emails,
-  link,
+  link = "www.google.com",
   admin_auth = { user: "socializd.app@gmail.com", pass: "Socializd123!" }
 ) {
   let testAccount = await nodemailer.createTestAccount();
@@ -20,7 +20,7 @@ const sendEmail = async function(
     to: emails.join(", "),
     subject: "Sending Email using Node.js",
     text: "That was easy!", // TODO: to be replaced with links
-    html: "<b>Hello world?</b>"
+    html: "<h1> Hello from Socializd </h1>"
   };
 
   // send mail with defined transport object
@@ -34,6 +34,10 @@ const sendEmail = async function(
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 };
 
-// sendEmail(["declan.wu@hotmail.com"]).catch(console.error);
+// sendEmail([
+//   "declan.wu@hotmail.com",
+//   "andrewting112@gmail.com",
+//   "anniekao@posteo.net"
+// ]).catch(console.error);
 
 module.exports = sendEmail;

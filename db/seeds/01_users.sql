@@ -7,11 +7,11 @@ INSERT INTO users (poll_id, email) VALUES ('1','Alice');
 INSERT INTO polls (admin_id, created_date, title) VALUES ('1', '4/26/2019', 'which movie do you want to watch?');
 
 -- options
-INSERT INTO options (poll_id, option_names) VALUES ('1','avengers');
-INSERT INTO options (poll_id, option_names) VALUES ('1','harry potter');
-INSERT INTO options (poll_id, option_names) VALUES ('1','star wars');
-INSERT INTO options (poll_id, option_names) VALUES ('1','lord of the ring');
-INSERT INTO options (poll_id, option_names) VALUES ('1','fast and furious');
+INSERT INTO options (poll_id, name) VALUES ('1','avengers');
+INSERT INTO options (poll_id, name) VALUES ('1','harry potter');
+INSERT INTO options (poll_id, name) VALUES ('1','star wars');
+INSERT INTO options (poll_id, name) VALUES ('1','lord of the ring');
+INSERT INTO options (poll_id, name) VALUES ('1','fast and furious');
 
 -- voters
 INSERT INTO voters (name, email) VALUES ('Daniel', 'daniel123@gmail.com');

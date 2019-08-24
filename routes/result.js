@@ -19,8 +19,13 @@ module.exports = db => {
         ret[row.name] = row.total_points;
       }
       res.render("result", ret);
+<<<<<<< HEAD
     } catch (e) {
       console.error(e);
+=======
+    } catch (error) {
+      console.error(error);
+>>>>>>> 28eb0934de686f2e42695542d30c70d7b52efc66
     }
 
   });

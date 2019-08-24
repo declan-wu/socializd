@@ -27,7 +27,7 @@ CREATE TABLE polls (
 CREATE TABLE options (
   id serial PRIMARY KEY,
   poll_id integer not null references polls(id) on delete cascade,
-  option_names text not null
+  name text not null
 );
 
 CREATE TABLE rankings (

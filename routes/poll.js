@@ -29,9 +29,11 @@ module.exports = db => {
         for (let row of data.rows) {
           render_vars["option_" + row.option_id] = row.option_name;
         }
-        console.log(render_vars);
+        // console.log(render_vars);
+        // res.render("poll", render_vars);
+        res.render("poll");
       })
       .catch(console.error);
-  };
+  });
   return router;
 };

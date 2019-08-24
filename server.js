@@ -36,9 +36,9 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const indexRoutes = requrie("./routes/index");
-const pollRoutes = requrie("./routes/poll");
-const resultRoutes = requrie("./routes/result");
+const indexRoutes = require("./routes/index");
+const pollRoutes = require("./routes/poll");
+const resultRoutes = require("./routes/result");
 
 // Home page
 app.use("/", indexRoutes(db));
@@ -47,7 +47,7 @@ app.use("/", indexRoutes(db));
 app.use("/poll", pollRoutes(db));
 
 // Result page
-app.use("/result", resultRoutes(db));
+// app.use("/result", resultRoutes(db));
 
 // Port
 app.listen(PORT, () => {

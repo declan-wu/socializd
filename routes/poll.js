@@ -26,10 +26,11 @@ module.exports = db => {
         //   option_2: 'harry potter',
         //   ...
         // }
+
         for (let row of data.rows) {
-          render_vars["option_" + option_id] = row.option_name;
+          render_vars["option_" + row.option_id] = row.option_name;
         }
-        res.render("poll", render_vars);
+        console.log(render_vars);
       })
       .catch(console.error);
   });

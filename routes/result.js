@@ -2,15 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = db => {
-  router.get("/:id", (req, res) => {
+  router.get("/:id", async (req, res) => {
     const query_params = [req.params.id];
     const query_string = `
     SELECT options.name, SUM(rankings.relative_points) AS total_points
     FROM rankings
-    WHERE poll_id = $1
     JOIN options ON rankings.option_id = options.id
+    WHERE options.poll_id = $1
     GROUP BY options.name
-    ORDER BY SUM(rankings.relative_points);`;
+    ORDER BY SUM(rankings.relative_points) DESC;`;
 
     try {
       const res = await db.query(query_string, query_params);

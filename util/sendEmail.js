@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 const sendEmail = async function(
   emails,
-  link,
+  link = "www.google.com",
   admin_auth = { user: "socializd.app@gmail.com", pass: "Socializd123!" }
 ) {
   let testAccount = await nodemailer.createTestAccount();

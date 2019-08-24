@@ -19,9 +19,10 @@ module.exports = db => {
         ret[row.name] = row.total_points;
       }
       res.render("result", ret);
-    } catch {
-      console.error(error);
+    } catch (e) {
+      console.error(e);
     }
+
   });
 
   return router;

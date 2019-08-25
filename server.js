@@ -43,7 +43,7 @@ const resultRoutes = require("./routes/result");
 // Home page
 app.use("/", indexRoutes(db));
 
-// Submission page
+// Polling page
 app.use("/poll", pollRoutes(db));
 
 // Result page

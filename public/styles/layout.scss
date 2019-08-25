@@ -1,9 +1,52 @@
-// See: https://sass-lang.com/
+/*
+Error: Invalid CSS after "100%": expected expression (e.g. 1px, bold), was ";"
+        on line 5 of style.css
 
-body {
-  background-color: #EEE;
+1: 
+2: 
+3: html,
+4: body {
+5:   height: 100%;
+6:   font-family: 'Open Sans', sans-serif !important;
+7:   font-weight:300;
+8:   margin-top:-1px;
+9: }
+10: body { position:relative; background-color: #3498db}
 
-  h1 {
-    color: #244751;
-  }
-}
+Backtrace:
+style.css:5
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/script/lexer.rb:240:in `expected!'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/script/parser.rb:897:in `assert_done'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/script/parser.rb:69:in `parse'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/script/parser.rb:228:in `parse'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/script.rb:27:in `parse'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:1169:in `parse_script'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:745:in `parse_property'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:707:in `parse_property_or_rule'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:666:in `parse_line'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:539:in `build_tree'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:558:in `block in append_children'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:557:in `each'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:557:in `append_children'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:548:in `block in build_tree'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:541:in `each'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:541:in `build_tree'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:558:in `block in append_children'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:557:in `each'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:557:in `append_children'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:417:in `_to_tree'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+/home/annie/.rvm/gems/ruby-2.3.4/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
+/home/annie/.rvm/gems/ruby-2.3.4/bin/sass:23:in `load'
+/home/annie/.rvm/gems/ruby-2.3.4/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"100%\": expected expression (e.g. 1px, bold), was \";\"\A         on line 5 of style.css\A \A 1: \A 2: \A 3: html,\A 4: body {\A 5:   height: 100%;\A 6:   font-family: 'Open Sans', sans-serif !important;\A 7:   font-weight:300;\A 8:   margin-top:-1px;\A 9: }\A 10: body { position:relative; background-color: #3498db}"; }

@@ -1,15 +1,4 @@
-
-
 $(() => {
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(user of users) {
-  //     $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });
-
   // Jquery for the initial polling form
   //
   // Counter to keep track of ids of textareas

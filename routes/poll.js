@@ -3,7 +3,30 @@ const router = express.Router();
 
 module.exports = db => {
   // TODO: need to verify if :id is in our poll, if not, render 404
+
   router.get("/:id", (req, res) => {
+    // calls the helper function to insert dummy voter into the voters table and return the voterId
+    const setVoterSession = () => {
+      const voterQuery_string = `
+      INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;
+  `;
+
+      db.query(voterQuery_string)
+        .then(data => {
+          const voterId = data.rows[0].id;
+          return voterId;
+        })
+        .then(voterId => {
+          req.session.voterId = voterId;
+        })
+        .catch(err => console.error(err));
+    };
+
+    setVoterSession();
+    const voterId = req.session.voterId;
+
+    // TODO: check cookie sessions for a voterId, if(!voterId) res.render else error already voted
+
     // query database to retrieve poll title, date, options, etc
     const poll_id = req.params.id;
     const query_params = [poll_id];
@@ -30,23 +53,26 @@ module.exports = db => {
 
   router.post("/:id", (req, res) => {
     const pollId = req.params.id;
-    //TODO: actual session cookie must be assigned using voterId
-    const voterId = 6;
+    const voterId = req.session.voterId;
     const options = req.body.optionsPos.reverse();
-    const query_string = `
+    let query_string = `
       INSERT INTO rankings(voter_id, poll_id, option_id, relative_points)
-      VALUES ($1, $2, $3, $4);
-    `;
-    const query_params = [voterId, pollId];
+      VALUES `;
+    const option_params = [];
+    const q_arr = [];
 
     for (let option of options) {
-      query_params.push(option);
-      query_params.push(options.indexOf(option) + 1);
+      option_params.push(option, options.indexOf(option) + 1);
+      q_arr.push(`( ${voterId}, ${pollId}, $${option_params.length - 1}, $${option_params.length} )`);
     }
-    console.log('query params: ', query_params);
-    console.log('query string: ', query_string);
-    // options: voter_id, poll_id, option_id, relative_points =
+
+    query_string += q_arr.join(', ');
+    query_string += ';';
+
+    db.query(query_string, option_params)
+      .catch(err => console.error(err));
   });
+
 
   return router;
 };

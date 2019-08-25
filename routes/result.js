@@ -3,6 +3,8 @@ const router = express.Router();
 
 module.exports = db => {
   router.get("/:id", async (req, res) => {
+    // TODO: stretch -- what to do in case of a tie?
+
     const query_params = [req.params.id];
     const query_string = `
     SELECT options.name, SUM(rankings.relative_points) AS total_points
@@ -13,9 +15,10 @@ module.exports = db => {
     ORDER BY SUM(rankings.relative_points) DESC;`;
 
     try {
-      const res = await db.query(query_string, query_params);
+      const data = await db.query(query_string, query_params);
       const ret = {};
-      for (let row of res.rows) {
+      console.log(data.rows);
+      for (let row of data.rows) {
         ret[row.name] = row.total_points;
       }
       res.render("result", ret);

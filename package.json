@@ -24,6 +24,7 @@
     "nodemailer": "^6.3.0",
     "pg": "^6.4.2",
     "pg-native": "^3.0.0",
+    "sortablejs": "^1.10.0-rc3",
     "twilio": "^3.33.4"
   },
   "devDependencies": {

@@ -39,13 +39,16 @@ module.exports = db => {
         const q_arr = [];
         for (let option of option_names) {
           option_params.push(option);
-          q_arr.push(`( ${poll_id}, $${query_params.length} )`);
+          q_arr.push(`( ${poll_id}, $${option_params.length} )`);
+          console.log("options: ", option_params);
+          console.log("option params length: ", option_params.length);
           // (15, )
         }
         option_string += q_arr.join(", ");
         option_string += ";";
-        console.log(option_string);
-        console.log(option_params);
+
+        console.log("option params: ", option_params);
+        console.log("option string: ", option_string);
 
         // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
         db.query(option_string, option_params);

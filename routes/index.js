@@ -9,8 +9,9 @@ module.exports = db => {
   router.get("/", (req, res) => {
     res.render("index");
   });
+
   // POST home page for creating a poll
-  router.post("/", (req, res) => {
+  router.post("/", async (req, res) => {
     // retrieve data from the from
     const poll_title = req.body.poll_title;
     const email = req.body.email;
@@ -20,8 +21,6 @@ module.exports = db => {
         option_names.push(req.body[option]);
       }
     }
-
-    // TODO: figure out what admin id is by session cookie
     const admin_id = 1;
     const created_date = moment().format("YYYY-MM-DD");
     const title = req.body.poll_title;
@@ -30,31 +29,28 @@ module.exports = db => {
       INSERT INTO polls (admin_id, created_date, title)
       VALUES ($1, $2, $3)
       RETURNING * ;`;
-    db.query(query_string, query_params)
-      .then(data => {
-        const poll_id = data.rows[0].id;
-        const option_params = [];
-        let option_string = `INSERT INTO options (poll_id, name) VALUES `;
-        const q_arr = [];
-        for (let option of option_names) {
-          option_params.push(option);
-          q_arr.push(`( ${poll_id}, $${option_params.length} )`);
-        }
-        option_string += q_arr.join(", ");
-        option_string += ";";
-
-        // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
-        db.query(option_string, option_params);
-        // return poll_id;
-      })
-      // .then(poll_id => {
-      //   sendEmail([email], `localhost:8080/poll/${poll_id}`);
-      //   res.redirect(303, `/result/${poll_id}`);
-      // })
-      .catch(err => {
-        console.log(err);
-        // res.status(500).json({ error: err.message });
-      });
+    try {
+      const poll_res = await db.query(query_string, query_params);
+      const poll_id = poll_res.rows[0].id;
+      const option_params = [];
+      let option_string = `INSERT INTO options (poll_id, name) VALUES `;
+      const q_arr = [];
+      for (let option of option_names) {
+        option_params.push(option);
+        q_arr.push(`( ${poll_id}, $${option_params.length} )`);
+      }
+      option_string += q_arr.join(", ");
+      option_string += ";";
+      // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
+      const option_res = await db.query(option_string, option_params);
+      sendEmail([email], `localhost:8080/poll/${poll_id}`);
+      console.log(poll_id);
+      // res.redirect(303, `/result/${poll_id}`);
+      res.redirect(303, `/`);
+    } catch (err) {
+      console.log(err);
+      // res.status(500).json({ error: err.message });
+    }
   });
   return router;
 };

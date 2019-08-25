@@ -14,13 +14,12 @@ const sendEmail = async function(
     secure: true, // true for 465, false for other ports
     auth: admin_auth
   });
-
   const mailOptions = {
     from: "socializd.app@gmail.com",
     to: emails.join(", "),
     subject: "Sending Email using Node.js",
-    text: "That was easy!", // TODO: to be replaced with links
-    html: "<h1> Hello from Socializd </h1>"
+    // text: link // TODO: to be replaced with links
+    html: `${link}`
   };
 
   // send mail with defined transport object

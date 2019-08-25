@@ -1,106 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-selection/1.2.0/d3-selection.js"></script>
-  <script src='https://cdn.jsdelivr.net/npm/britecharts@2/dist/bundled/britecharts.min.js'></script>  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/britecharts/dist/css/britecharts.min.css" type="text/css" />
-  <title>Document</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-selection/1.2.0/d3-selection.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/britecharts@2.10.0/dist/umd/bar.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/britecharts@2.10.0/dist/umd/donut.min.js"
+      type="text/javascript"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/britecharts@2.10.0/dist/bundled/britecharts.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/britecharts/dist/css/britecharts.min.css"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="bar-container"></div>
 
-<body>
-  <div class="js-donut-chart-container donut-chart-container" style="height:450px; width:450px;"></div>
-  <div class="js-legend-chart-container legend-chart-container"></div>
+    <script>
+        // Instantiate bar chart and container
+        // const { select, selectAll } = require('d3-selection');
+        const barChart = britecharts.bar();
+        const container = d3.select(".bar-container");
+        // const donutChart = britecharts.donut();
 
-  <script>
-    // Instantiate bar chart and container
-    // const barChart = britecharts.bar();
-    // const container = d3.select(".bar-container");
-    // const donutChart = require("Donut");
+        // console.log(what);
 
-    // console.log(what);
+        // Create Dataset with proper shape
+        // TODO:  EJS!!!!!!
 
-    // Create Dataset with proper shape
-    // TODO: WHAT THE FUCK IS WRONG WITH EJS!!!!!!
-    // const barData = [
-    //   { name: "<%= what[0][0] %>", value: <%= what[0][1] %> },
-    //   { name: "<%= what[1][0] %>", value: <%= what[1][1] %> },
-    //   { name: "<%= what[2][0] %>", value: <%= what[2][1] %> },
-    //   { name: "<%= what[3][0] %>", value: <%= what[3][1] %> },
-    //   { name: "<%= what[4][0] %>", value: <%= what[4][1] %> }
-    // ];
+      const barData = [
+          { name: "<%= what[0][0] %>", value: <%= what[0][1] %> },
+          { name: "<%= what[1][0] %>", value: <%= what[1][1] %> }
+        ];
 
-    // Configure chart
-    // barChart
-    //   .margin({ left: 100 })
-    //   .isHorizontal(true)
-    //   .height(400)
-    //   .width(600);
-    // container.datum(barData).call(barChart);
-    const donutData = {
-      data: [{
-          name: "<%= what[0][0] %>",
-          value: < %= what[0][1] % >
-        },
-        {
-          name: "<%= what[1][0] %>",
-          value: < %= what[1][1] % >
-        },
-        {
-          name: "<%= what[2][0] %>",
-          value: < %= what[2][1] % >
-        },
-        {
-          name: "<%= what[3][0] %>",
-          value: < %= what[3][1] % >
-        },
-        {
-          name: "<%= what[4][0] %>",
-          value: < %= what[4][1] % >
-        }
-      ]
-    };
+        // Configure chart
+        barChart
+          .margin({ left: 100 })
+          .isHorizontal(true)
+          .height(400)
+          .width(600);
 
-    function createDonutChart() {
-      let donutChart = britecharts.donut(),
-        donutContainer = d3.select('.js-donut-chart-container'),
-        containerWidth = donutContainer.node() ? donutContainer.node().getBoundingClientRect().width : false,
-        legendChart = britecharts.legend(),
-        legendContainer;
-
-      donutChart.
-      isAnimated(true).
-      highlightSliceById(2).hasFixedHighlightedSlice(true).
-      width(containerWidth).
-      height(containerWidth).
-      externalRadius(containerWidth / 2.5).
-      internalRadius(containerWidth / 5).
-      on('customMouseOver', function (data) {
-        legendChart.highlight(data.data.id);
-      }).
-      on('customMouseOut', function () {
-        legendChart.clearHighlight();
-      });
-
-      legendChart.
-      width(300).
-      height(200).
-      numberFormat('s');
-
-      donutContainer.datum(donutData.data).call(donutChart);
-      legendContainer = d3.select('.js-legend-chart-container');
-      legendContainer.datum(donutData.data).call(legendChart);
-
-      donutChart.highlightSliceById(3).isAnimated(true); //not working
-      donutContainer.datum(donutData.data).call(donutChart);
-
-    }
-
-    createDonutChart();
-
-  </script>
-</body>
-
+        container.datum(barData).call(barChart);
+    </script>
+  </body>
 </html>

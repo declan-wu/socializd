@@ -7,11 +7,25 @@ const router = express.Router();
 module.exports = db => {
   // GET home page for admin
   router.get("/", (req, res) => {
-    res.render("index");
+    // Gets the number of polls and adds 1 to the total in order to get a number to append
+    // to the poll link on submission
+    const query_string = `
+      SELECT COUNT(*) FROM polls;
+    `;
+
+    db.query(query_string)
+      .then(data => {
+        const renderVars = {
+          count: Number(data.rows[0].count) + 1
+        };
+        res.render("index", renderVars);
+      })
+      .catch(err => console.error(err));
   });
   // POST home page for creating a poll
   router.post("/", (req, res) => {
     // retrieve data from the from
+    console.log(req.body);
     const poll_title = req.body.poll_title;
     const email = req.body.email;
     const option_names = [];
@@ -24,8 +38,7 @@ module.exports = db => {
     // TODO: figure out what admin id is by session cookie
     const admin_id = 1;
     const created_date = moment().format("YYYY-MM-DD");
-    const title = req.body.poll_title;
-    const query_params = [admin_id, created_date, title];
+    const query_params = [admin_id, created_date, poll_title];
     const query_string = `
       INSERT INTO polls (admin_id, created_date, title)
       VALUES ($1, $2, $3)

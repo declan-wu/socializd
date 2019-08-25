@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-selection/1.2.0/d3-selection.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/britecharts@2.10.0/dist/umd/bar.min.js"
+      type="text/javascript"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/britecharts/dist/css/britecharts.min.css"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="bar-container"></div>
+
+    <script>
+      // Instantiate bar chart and container
+      const barChart = britecharts.bar();
+      const container = d3.select(".bar-container");
+
+      // Create Dataset with proper shape
+      const barData = [
+        { name: "Luminous", value: 2 },
+        { name: "Glittering", value: 5 },
+        { name: "Intense", value: 4 },
+        { name: "Radiant", value: 3 }
+      ];
+
+      // Configure chart
+      barChart
+        .margin({ left: 100 })
+        .isHorizontal(true)
+        .height(400)
+        .width(600);
+
+      container.datum(barData).call(barChart);
+    </script>
+  </body>
+</html>

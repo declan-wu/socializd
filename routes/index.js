@@ -33,7 +33,6 @@ module.exports = db => {
     db.query(query_string, query_params)
       .then(data => {
         const poll_id = data.rows[0].id;
-        console.log(poll_id);
         const option_params = [];
         let option_string = `INSERT INTO options (poll_id, name) VALUES `;
         const q_arr = [];
@@ -44,8 +43,6 @@ module.exports = db => {
         }
         option_string += q_arr.join(", ");
         option_string += ";";
-        console.log(option_string);
-        console.log(option_params);
 
         // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
         db.query(option_string, option_params);

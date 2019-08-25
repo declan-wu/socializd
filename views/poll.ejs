@@ -2,18 +2,39 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Poll: <%= pollTitle %></title>
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <% include ./partials/_head %>
 
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 
 <body>
-  <h1>Welcome to Socializd</h1>
+    <div class="pagewrap">
+      <!-- TODO: check route for POST action -->
+      <form class="form" id="form" method='POST' action='/poll/<%= pollId %>'>
+      <form class="form" id="form"'>
+        <div class="form__poll_title">
+          <%= pollTitle %>
+        </div>
+
+        <!-- TODO: Add header telling the voter to rank the following options-->
+        <div id="draggable">
+
+          <% for (let key in options) { %>
+            <li><button class="form__ranking" name="<%= key %>"><%= options[key] %></button></li>
+          <% } %>
+
+        </div>
+
+         <div class="form__buttons">
+           <input class="form__submit" id="form__submit" type="submit" value="Submit"></input>
+         </div>
+      </form>
+    </div>
+
+
+  <% include ./partials/_footer %>
+
 </body>
 
 </html>

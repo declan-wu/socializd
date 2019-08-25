@@ -40,4 +40,18 @@ $(() => {
   $('.form__submit').on('click', function(event) {
     clicked(this);
   });
+
+  // drag and drop
+  const sortable = new Sortable.create(draggable);
+
+});
+
+$("#draggable").on("change", () => {
+  const optionsPos = {};
+  let pos = 1;
+  for (let i = 0; i < $('button').length; i++) {
+    optionsPos[pos] = ($('button')[i].name);
+    pos++;
+  }
+  console.log(optionsPos);
 });

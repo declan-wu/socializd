@@ -13,9 +13,9 @@ module.exports = db => {
     ORDER BY SUM(rankings.relative_points) DESC;`;
 
     try {
-      const res = await db.query(query_string, query_params);
+      const data = await db.query(query_string, query_params);
       const ret = {};
-      for (let row of res.rows) {
+      for (let row of data.rows) {
         ret[row.name] = row.total_points;
       }
       res.render("result", ret);

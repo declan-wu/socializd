@@ -7,23 +7,24 @@ module.exports = db => {
   router.get("/:id", (req, res) => {
     // calls the helper function to insert dummy voter into the voters table and return the voterId
     const setVoterSession = () => {
-      const voterQuery_string = `
-      INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;
-  `;
+      console.log(req.session)
+  //     const voterQuery_string = `
+  //     INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;
+  // `;
 
-      db.query(voterQuery_string)
-        .then(data => {
-          const voterId = data.rows[0].id;
-          return voterId;
-        })
-        .then(voterId => {
-          req.session.voterId = voterId;
-        })
-        .catch(err => console.error(err));
+  //     db.query(voterQuery_string)
+  //       .then(data => {
+  //         const voterId = data.rows[0].id;
+  //         return voterId;
+  //       })
+  //       .then(voterId => {
+
+  //       })
+  //       .catch(err => console.error(err));
     };
 
     setVoterSession();
-    const voterId = req.session.voterId;
+    // const voterId = req.session.voterId;
 
     // TODO: check cookie sessions for a voterId, if(!voterId) res.render else error already voted
 
@@ -53,7 +54,8 @@ module.exports = db => {
 
   router.post("/:id", (req, res) => {
     const pollId = req.params.id;
-    const voterId = req.session.voterId;
+    // const voterId = req.session.voterId;
+    const voterId =6;
     const options = req.body.optionsPos.reverse();
     let query_string = `
       INSERT INTO rankings(voter_id, poll_id, option_id, relative_points)

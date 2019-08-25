@@ -5,7 +5,8 @@ module.exports = db => {
   // TODO: need to verify if :id is in our poll, if not, render 404
 
   router.get("/:id", (req, res) => {
-    // calls the helper function to insert dummy voter into the voters table and return the voterId
+    // calls the helper function to insert dummy voter into the voters table, returning the voterId
+    // sets a cookie session using the voterId
     const setVoterSession = () => {
       const voterQuery_string = `
       INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;

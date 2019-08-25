@@ -71,6 +71,7 @@ module.exports = db => {
     query_string += ';';
 
     db.query(query_string, option_params)
+      .then(res.redirect(303, `/result/${pollId}`))
       .catch(err => console.error(err));
   });
 

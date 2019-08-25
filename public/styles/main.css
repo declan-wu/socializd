@@ -80,7 +80,7 @@ li {
     box-shadow: -3px 5px #5bbce4;
     cursor: text;
     transition: all 0s ease; }
-  .form__ranking {
+  .form li {
     margin-top: 1.2em;
     border: none;
     padding: .90em;

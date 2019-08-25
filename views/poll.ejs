@@ -18,13 +18,13 @@
         </div>
 
         <!-- TODO: Add header telling the voter to rank the following options-->
-        <div id="draggable">
+        <ul id="draggable">
 
           <% for (let key in options) { %>
-            <li><button class="form__ranking" name="<%= key %>"><%= options[key] %></button></li>
+             <li> <%= options[key] %> <input type='hidden' name='optionsPos[]' value='<%= key %>'></li>
           <% } %>
 
-        </div>
+          </ul>
 
          <div class="form__buttons">
            <input class="form__submit" id="form__submit" type="submit" value="Submit"></input>

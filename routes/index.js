@@ -44,7 +44,9 @@ module.exports = db => {
       // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
       const option_res = await db.query(option_string, option_params);
       sendEmail([email], `localhost:8080/poll/${poll_id}`);
-      res.redirect(303, `/result/${poll_id}`);
+      console.log(poll_id);
+      // res.redirect(303, `/result/${poll_id}`);
+      res.redirect(303, `/`);
     } catch (err) {
       console.log(err);
       // res.status(500).json({ error: err.message });

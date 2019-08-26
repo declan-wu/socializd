@@ -1,7 +1,7 @@
-for (let option in "<%= what %>") {
-  console.log(option);
-  // console.log("<%= what[option] %>");
-}
+// for (let option in "<%= what %>") {
+//   console.log(option);
+//   // console.log("<%= what[option] %>");
+// }
 
 // const barData = [
 //   { name: "<%= what[0][0] %>", value: <%= what[0][1] %> },

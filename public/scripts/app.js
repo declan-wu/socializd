@@ -20,6 +20,20 @@ $(() => {
     }
   });
 
+  // target the submit button, on submit, manually submit the form
+  $("#form__submit").click(function() {
+    console.log($("#form").serialize());
+    $.post(
+      "/",
+      $("#form").serialize(),
+      function(data) {
+        //... do something with response from server
+        // maybe trigger the thank you page
+      },
+      "json" // I expect a JSON response
+    );
+  });
+
   // give the submit / reset buttons the effect of being pressed
   // down when clicked
   // const clicked = (target) => {

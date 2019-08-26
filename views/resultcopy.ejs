@@ -22,26 +22,13 @@
     <script>
       let donutData = {
         data: [
+          <% what.forEach(([name, quantity]) => { %>
           {
-            name: "<%= what[0][0] %>",
-            quantity: <%= what[0][1] %>
+            name: "<%= name %>",
+            quantity: <%= quantity %>
           },
-          {
-            name: "<%= what[1][0] %>",
-            quantity: <%= what[1][1] %>
-          },
-          {
-            name: "<%= what[0][0] %>",
-            quantity: <%= what[0][1] %>
-          },
-          {
-            name: "<%= what[1][0] %>",
-            quantity: <%= what[1][1] %>
-          },
-          {
-            name: "<%= what[0][0] %>",
-            quantity: <%= what[0][1] %>
-          }]
+          <% }) %>
+        ]
       };
 
       function createDonutChart() {

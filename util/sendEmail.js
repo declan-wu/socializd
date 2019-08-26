@@ -1,6 +1,13 @@
 const nodemailer = require("nodemailer");
 
-var email_temp = `
+const sendEmail = async function(
+  emails,
+  link = "www.google.com",
+  admin_auth = { user: "socializd.app@gmail.com", pass: "Socializd123!" }
+) {
+  let testAccount = await nodemailer.createTestAccount();
+
+  var email_temp = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html style="width:100%;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0;">
  <head>
@@ -150,10 +157,10 @@ a[x-apple-data-detectors] {
                       <td esdev-links-color="#b7bdc9" align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#B7BDC9;">Your event has been created. Please click the link below to visit poll results or share the link below to your&nbsp;</p></td>
                      </tr>
                      <tr style="border-collapse:collapse;">
-                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Poll Results</a></span></td>
+                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="${link}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Poll Results</a></span></td>
                      </tr>
                      <tr style="border-collapse:collapse;">
-                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:25px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="https://viewstripo.email/" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">https://www.socializd/234dsuhsd!@#</a></span></td>
+                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:25px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="${link}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">${link}</a></span></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -188,13 +195,6 @@ a[x-apple-data-detectors] {
  </body>
 </html>`;
 
-const sendEmail = async function(
-  emails,
-  link = "www.google.com",
-  admin_auth = { user: "socializd.app@gmail.com", pass: "Socializd123!" }
-) {
-  let testAccount = await nodemailer.createTestAccount();
-
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -206,19 +206,11 @@ const sendEmail = async function(
     from: "socializd.app@gmail.com",
     to: emails.join(", "),
     subject: "Sending Email using Node.js",
-    // text: link // TODO: to be replaced with links
     html: `${email_temp}`
   };
 
   // send mail with defined transport object
   let info = await transporter.sendMail(mailOptions);
-
-  // console.log("Message sent: %s", info.messageId);
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  // Preview only available when sending through an Ethereal account
-  // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 };
 
 // sendEmail([["declan.wu@hotmail.com"]]).catch(console.error);

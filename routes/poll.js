@@ -5,11 +5,10 @@ module.exports = db => {
   router.get("/:id", (req, res) => {
     // to verify if :id is in our poll, if not, render 404
     const poll_id_query_string = `SELECT * FROM polls WHERE id = $1 ;`;
-    console.log("lalallaallal");
     db.query(poll_id_query_string, [Number(req.params.id)])
       .then(data => {
         if (data.rows.length === 0) {
-          // TODO: we need to change the below link to 404
+          // FIXME: we need to change the below link to 404
           res.redirect(303, "/");
         }
       })
@@ -17,28 +16,25 @@ module.exports = db => {
         console.log(err);
       });
 
-    // calls the helper function to insert dummy voter into the voters table, returning the voterId
-    // sets a cookie session using the voterId
-    const setVoterSession = () => {
+    // check if the voter has already voted by checking if the session cookie has property called: poll_id;
+    // if it has poll_id, then he voted, redirect; else: set the cookie.poll_id to be true, and then insert voter to db
+
+    if (req.session.hasOwnProperty(req.params.id)) {
+      // FIXME: need to be you have already voted page
+      res.redirect(303, "/");
+      return;
+    } else {
+      req.session[req.params.id] = true;
       const voterQuery_string = `
-      INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;
-  `;
+      INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;`;
 
       db.query(voterQuery_string)
         .then(data => {
           const voterId = data.rows[0].id;
-          return voterId;
-        })
-        .then(voterId => {
           req.session.voterId = voterId;
         })
         .catch(err => console.log(err));
-    };
-
-    setVoterSession();
-    const voterId = req.session.voterId;
-
-    // TODO: check cookie sessions for a voterId, if(!voterId) res.render else error already voted
+    }
 
     // query database to retrieve poll title, date, options, etc
     const poll_id = req.params.id;

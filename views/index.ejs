@@ -49,7 +49,7 @@
               </li>
               <!--Annie's poll selection page-->
               <li
-                class="form-group animated hide option-fields"
+                class="form-group animated hide"
                 data-color="#00AF66"
               >
                 <h3>Please enter the options for your poll</h3>
@@ -60,9 +60,9 @@
                   required=""
                   placeholder="What Are You Deciding?"
                 />
+              <div class=" option-fields">
                 <input
                   class="form__option"
-                  id="option1"
                   type="textarea"
                   required=""
                   name="option_1"
@@ -70,7 +70,6 @@
                 />
                 <input
                   class="form__option"
-                  id="option2"
                   type="textarea"
                   required=""
                   name="option_2"
@@ -84,13 +83,14 @@
                   >
                     Create Poll!
                   </button>
-                  <input
-                    class="form__reset"
+                  <div
+                    class="form__reset btn btn-default btn-lg"
                     id="form__reset"
-                    type="button"
-                    value="Reset"
-                  />
+                  >
+                  Reset
+                  </div>
                 </div>
+              </div>
               </li>
             </ul>
           </form>

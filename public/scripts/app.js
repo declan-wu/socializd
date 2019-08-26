@@ -4,17 +4,19 @@ $(() => {
   // Counter to keep track of ids of textareas
   let optionId = 3;
 
-  $(".form__option").on("keyup", function(event) {
+  $('.option-fields').on("keyup", "input", function(event) {
     event.preventDefault();
+    console.log(event);
     if (event.which === 13 && optionId <= 5) {
       $(".option-fields")
         .find(".form__buttons")
         .before(
           $("<input />")
-            .attr("name", "option_" + optionId.toString())
-            .attr("type", "textarea")
-            .attr("placeholder", "Option")
             .addClass("form__option")
+            .attr("type", "textarea")
+            .prop("required", true)
+            .attr("name", "option_" + optionId.toString())
+            .attr("placeholder", "Option")
         );
       optionId++;
     }

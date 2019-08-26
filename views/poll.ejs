@@ -1,44 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <title>Poll: <%= pollTitle %></title>
-
-  <% include ./partials/_head %>
-
-</head>
-
-<body>
-
-
-        <div class="form__poll_title">
-          <%= pollTitle %>
-        </div>
-
-        <!-- TODO: Add header telling the voter to rank the following options-->
-        <!-- <ul id="draggable">
-
-          <% for (let key in options) { %>
-             <li> <%= options[key] %> <input type='hidden'
-                 name='optionsPos[]'
-                 value='<%= key %>'></li>
-          <% } %>
-
-          </ul>
-
-         <div class="form__buttons">
-           <input class="form__submit" id="form__submit" type="submit" value="Submit"></input>
-         </div>
-      </form>
-    </div>
-
-
-  <% include ./partials/_footer %>
-</body>
-
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,20 +12,25 @@
     <div class="table">
       <div class="centerUp">
 
-        <form class="form" method='POST' action='/poll/<%= pollId %>'>
-          <ul class="progress-form">
-            <li class="form-group animated" id="draggable" data-color="#00AF66">
+        <form class="form-group" method='POST' action='/poll/<%= pollId %>'>
+          <div class="progress-form">
+            <div id="draggable" data-color="#00AF66">
               <h3>Help me decide: <%= pollTitle %></h3>
 
               <% for (let key in options) { %>
-                 <input type="button" name='optionsPos[]' value="<%= options[key] %>"
-                   placeholder="Option">
+                 <div class="poll-option">
+                  <%= options[key] %>
+                    <input type="hidden" name='optionsPos[]' value="<%= key %>"
+                    placeholder="Option">
+                    </input>
+                  </div>
               <% } %>
-              <div class="form__buttons">
-                <button class="form__submit btn btn-default btn-lg submit" id="form__submit" type="submit">Submit</button>
-              </div>
-            </li>
-          </ul>
+            </div>
+             <div class="form__buttons">
+               <button class="form__submit btn btn-default btn-lg submit" id="form__submit"
+                 type="submit">Submit</button>
+             </div>
+          </div>
         </form>
       </div>
     </div>

@@ -7,8 +7,8 @@ $(() => {
   $(".form__option").on("keyup", function(event) {
     event.preventDefault();
     if (event.which === 13 && optionId <= 5) {
-      $("form")
-        .find(".form__email")
+      $(".option-fields")
+        .find(".form__buttons")
         .before(
           $("<input />")
             .attr("id", "option" + optionId.toString())
@@ -28,15 +28,14 @@ $(() => {
   //   });
   // };
 
-  $('.form__reset').on('click', function(event) {
+  $(".form__reset").on("click", function(event) {
     // TODO: Be able to remove text boxes that have been added on
-    $('.form__option').val('');
-    $('.form__title').val('');
+    $(".form__option").val("");
+    $(".form__title").val("");
   });
 
   // $('.form__submit').on('click', function(event) {
   //   event.preventPropagation();
   //   clicked(this);
   // });
-
 });

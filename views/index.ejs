@@ -1,65 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <% include partials/_head %>
+    <title>Socializd -</title>
+  </head>
 
-<head>
-  <% include partials/_head %>
-  <title>Socializd -</title>
-</head>
+  <body>
+    <h1 class="h1-header animated bounceInLeft">SOCIALIZD</h1>
+    <div class="table-class">
+      <div class="table">
+        <div class="centerUp">
+          <form class="form" id="form" method="POST" action="/">
+            <ul class="progress-form">
+              <li
+                class="form-group animated fadeInRightBig  activate"
+                data-color="#E1523D"
+              >
+                <label for="nameInput">
+                  <h1>Hey there!</h1>
+                  Lets create a poll so you can share with your friends! But
+                  first would you mind introducing yourself?
+                </label>
+                <input
+                  type="text"
+                  class="form-control getName"
+                  name="name"
+                  placeholder="enter name"
+                  required="required"
+                />
+              </li>
+              <li
+                class="form-group animated hide inactive"
+                data-color="#7C6992"
+              >
+                <label for="exampleInputEmail1">
+                  <h1>Nice to meet you.</h1>
+                  We're going to send you some information when someone votes on
+                  your poll. Can we have your email? Don't worry, we're not into
+                  spamming.
+                </label>
+                <input
+                  type="email"
+                  class="form-control form__email"
+                  placeholder="@email"
+                  name="email"
+                  required="required"
+                />
+              </li>
+              <!--Annie's poll selection page-->
+              <li
+                class="form-group animated hide option-fields"
+                data-color="#00AF66"
+              >
+                <h3>Please enter the options for your poll</h3>
+                <input
+                  class="form__title"
+                  type="textarea"
+                  name="poll_title"
+                  required=""
+                  placeholder="What Are You Deciding?"
+                />
+                <input
+                  class="form__option"
+                  id="option1"
+                  type="textarea"
+                  required=""
+                  name="option_1"
+                  placeholder="Option"
+                />
+                <input
+                  class="form__option"
+                  id="option2"
+                  type="textarea"
+                  required=""
+                  name="option_2"
+                  placeholder="Option"
+                />
+                <div class="form__buttons">
+                  <button
+                    class="form__submit btn btn-default btn-lg submit"
+                    id="form__submit"
+                    type="button"
+                  >
+                    Create Poll!
+                  </button>
+                  <input
+                    class="form__reset"
+                    id="form__reset"
+                    type="button"
+                    value="Reset"
+                  />
+                </div>
+              </li>
+            </ul>
+          </form>
 
-<body>
-  <h1 class="h1-header animated bounceInLeft">SOCIALIZD</h1>
-  <div class="table-class">
-    <div class="table">
-      <div class="centerUp">
-
-        <form class="form" id="form" method="POST" action="/">
-          <ul class="progress-form">
-            <li class="form-group animated fadeInRightBig  activate" data-color="#E1523D">
-              <label for="nameInput">
-                <h1>Hey there!</h1>
-                Lets create a poll so you can share with your friends! But first would you mind introducing yourself?
-              </label>
-              <input type="text" class="form-control getName" name="name" placeholder="enter name" required="required" />
-            </li>
-            <li class="form-group animated hide inactive" data-color="#7C6992">
-              <label for="exampleInputEmail1">
-                <h1>Nice to meet you.</h1>
-                We're going to send you some information when someone votes on your poll. Can we have your email? Don't
-                worry, we're not into spamming.
-              </label>
-              <input type="email" class="form-control form__email" placeholder="@email" name="email"
-                required="" />
-            </li>
-            <!--Annie's poll selection page-->
-            <li class="form-group animated hide" data-color="#00AF66">
-              <h3>Please enter the options for your poll</h3>
-              <input class="form__title" type="textarea" name="poll_title" required="" placeholder="What Are You Deciding?">
-              <input class="form__option" id="option1" type="textarea" required="" name="option_1" placeholder="Option">
-              <input class="form__option" id="option2" type="textarea" required="" name="option_2" placeholder="Option">
-              <div class="form__buttons">
-                <button class="btn btn-default btn-lg submit" id="form__submit" type="submit">Create Poll!</button>
-                <button class=" btn btn-default btn-lg submit" id="form__reset" type="button">Reset</button>
-              </div>
-            </li>
-          </ul>
-        </form>
-
-        <button class="btn btn-default btn-lg nxt animated hide">Next<span class="icon-next"></span></button>
+          <button class="btn btn-default btn-lg nxt animated hide">
+            Next<span class="icon-next"></span>
+          </button>
+        </div>
       </div>
     </div>
+    <div class="animated thanks hide">
+      <h1 style="font-weight:100; font-size:48px; width: 80%; margin: 0 auto;">
+        Thanks for your Submission! Here is your link
+      </h1>
+      <!--  GET LINK-->
+      <form action="">
+        <button class="btn btn-lg btn-success" style="margin:20px;">
+          blahblahblah.com/<%= count %>
+        </button>
+      </form>
+    </div>
 
-  </div>
-  <div class="animated thanks hide">
-    <h1 style="font-weight:100; font-size:48px; width: 80%; margin: 0 auto;">Thanks for your Submission! Here is your
-      link</h1>
-    <!--  GET LINK-->
-    <form action="">
-      <button class="btn btn-lg btn-success" style="margin:20px;"> blahblahblah.com/<%= count %></button>
-    </form>
-  </div>
-
-  <% include partials/_footer %>
-
-</body>
-
+    <% include partials/_footer %>
+  </body>
 </html>

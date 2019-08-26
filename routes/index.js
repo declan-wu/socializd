@@ -26,7 +26,6 @@ module.exports = db => {
   // POST home page for creating a poll
   router.post("/", async (req, res) => {
     // retrieve data from the from
-    console.log(req.body);
     const poll_title = req.body.poll_title;
     const email = req.body.email;
     const option_names = [];
@@ -57,7 +56,6 @@ module.exports = db => {
       // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
       const option_res = await db.query(option_string, option_params);
       sendEmail([email], `localhost:8080/poll/${poll_id}`);
-      console.log(poll_id);
       // res.redirect(303, `/result/${poll_id}`);
       res.redirect(303, `/`);
     } catch (err) {

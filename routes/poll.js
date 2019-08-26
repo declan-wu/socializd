@@ -2,9 +2,21 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = db => {
-  // TODO: need to verify if :id is in our poll, if not, render 404
-
   router.get("/:id", (req, res) => {
+    // to verify if :id is in our poll, if not, render 404
+    const poll_id_query_string = `SELECT * FROM polls WHERE id = $1 ;`;
+    console.log("lalallaallal");
+    db.query(poll_id_query_string, [Number(req.params.id)])
+      .then(data => {
+        if (data.rows.length === 0) {
+          // TODO: we need to change the below link to 404
+          res.redirect(303, "/");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     // calls the helper function to insert dummy voter into the voters table, returning the voterId
     // sets a cookie session using the voterId
     const setVoterSession = () => {
@@ -20,7 +32,7 @@ module.exports = db => {
         .then(voterId => {
           req.session.voterId = voterId;
         })
-        .catch(err => console.error(err));
+        .catch(err => console.log(err));
     };
 
     setVoterSession();
@@ -65,17 +77,20 @@ module.exports = db => {
 
     for (let option of options) {
       option_params.push(option, options.indexOf(option) + 1);
-      q_arr.push(`( ${voterId}, ${pollId}, $${option_params.length - 1}, $${option_params.length} )`);
+      q_arr.push(
+        `( ${voterId}, ${pollId}, $${option_params.length - 1}, $${
+          option_params.length
+        } )`
+      );
     }
 
-    query_string += q_arr.join(', ');
-    query_string += ';';
+    query_string += q_arr.join(", ");
+    query_string += ";";
 
     db.query(query_string, option_params)
       .then(res.redirect(303, `/result/${pollId}`))
       .catch(err => console.error(err));
   });
-
 
   return router;
 };

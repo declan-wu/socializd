@@ -74,7 +74,7 @@ border: none;
 .form-group label h1 {font-size:48px; font-weight:100;}
 .form-group input  { border:none;  background:rgba(255,255,255, .2);height:auto; padding:15px 15px; box-shadow:none; border-radius:0; font-size:36px; color:#fff; outline: 0; width:100% }
 
-.h1-header {font-weight:100; margin-top:0; font-size:36px; background:#e74c3c; padding:25px; margin-left:-10px; width:400px; position:absolute}
+.h1-header {font-weight:100; margin-top:0; font-size:36px; background:#e74c3c; padding:25px; margin-left:-10px; width:400px; position:absolute;}
 .nxt {position:absolute; bottom:3%; right:3%}
 /*
  * Cover
@@ -114,6 +114,13 @@ top: 20%;
 z-index: 99999999999999999999999;
 width: 100%;
 text-align: center;
+
+}
+
+
+.head {
+  text-align: center;
+  padding-top: 20px;
 
 }
 

@@ -22,7 +22,7 @@ db.connect();
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan("dev"));
 
-app.use(cookieSession({ keys: ['key1'] }));
+app.use(cookieSession({ keys: ["key1"] }));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,7 +42,7 @@ app.use(express.static("public"));
 const indexRoutes = require("./routes/index");
 const pollRoutes = require("./routes/poll");
 const resultRoutes = require("./routes/result");
-
+const errorRoutes = require("./routes/error");
 // Home page
 app.use("/", indexRoutes(db));
 
@@ -51,6 +51,9 @@ app.use("/poll", pollRoutes(db));
 
 // Result page
 app.use("/result", resultRoutes(db));
+
+// Error page
+app.use("/error", errorRoutes(db));
 
 // Port
 app.listen(PORT, () => {

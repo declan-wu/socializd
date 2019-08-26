@@ -9,7 +9,7 @@ module.exports = db => {
       .then(data => {
         if (data.rows.length === 0) {
           // FIXME: we need to change the below link to 404
-          res.redirect(303, "/");
+          res.redirect(303, "/error/404/");
         }
       })
       .catch(err => {
@@ -21,7 +21,7 @@ module.exports = db => {
 
     if (req.session.hasOwnProperty(req.params.id)) {
       // FIXME: need to be you have already voted page
-      res.redirect(303, "/");
+      res.redirect(303, "/error/accessFailed");
       return;
     } else {
       req.session[req.params.id] = true;
@@ -72,7 +72,10 @@ module.exports = db => {
     const q_arr = [];
 
     for (let option of options) {
-      option_params.push(option, (options.indexOf(option) + 1) / options.length);
+      option_params.push(
+        option,
+        (options.indexOf(option) + 1) / options.length
+      );
       q_arr.push(
         `( ${voterId}, ${pollId}, $${option_params.length - 1}, $${
           option_params.length

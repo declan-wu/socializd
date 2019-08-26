@@ -63,7 +63,7 @@ module.exports = db => {
   router.post("/:id", (req, res) => {
     const pollId = req.params.id;
     const voterId = req.session.voterId;
-    const options = req.body.optionsPos;
+    const options = req.body.optionsPos.reverse();
 
     let query_string = `
       INSERT INTO rankings(voter_id, poll_id, option_id, relative_points)
@@ -72,14 +72,13 @@ module.exports = db => {
     const q_arr = [];
 
     for (let option of options) {
-      option_params.push(option, options.indexOf(option) + 1);
+      option_params.push(option, (options.indexOf(option) + 1) / options.length);
       q_arr.push(
         `( ${voterId}, ${pollId}, $${option_params.length - 1}, $${
           option_params.length
         } )`
       );
     }
-
     query_string += q_arr.join(", ");
     query_string += ";";
 

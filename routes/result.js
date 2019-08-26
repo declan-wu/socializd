@@ -3,7 +3,15 @@ const router = express.Router();
 
 module.exports = db => {
   router.get("/:id", async (req, res) => {
-    // TODO: stretch -- what to do in case of a tie?
+    // to verify if :id is in our poll, if not, render 404
+    const poll_id_query_string = `SELECT * FROM polls WHERE id = $1 ;`;
+    const poll_data = await db.query(poll_id_query_string, [
+      Number(req.params.id)
+    ]);
+    if (poll_data.rows.length === 0) {
+      // FIXME: we need to change the below link to 404
+      res.redirect(303, "/error/404/");
+    }
 
     const query_params = [req.params.id];
     const query_string = `
@@ -26,18 +34,17 @@ module.exports = db => {
       const options = [];
       const created_date = data_date_title.rows[0].created_date;
       const poll_title = data_date_title.rows[0].title;
-      // console.log(data_date_title.rows[0].created_date);
-      // console.log(data_date_title.rows[0].title);
-
 
       for (let row of options_data.rows) {
         options.push([row.name, Number(row.total_points)]);
       }
-      // console.log(ret);
-      temp_var = { what: options, created_date: created_date, poll_title: poll_title };
-      res.render("resultcopy", temp_var);
 
-      // res.render("result", { option_1: [10, 10, 1], option_2: 4, option_3: 5 });
+      temp_var = {
+        what: options,
+        created_date: created_date,
+        poll_title: poll_title
+      };
+      res.render("resultcopy", temp_var);
     } catch (e) {
       console.error(e);
     }

@@ -9,7 +9,7 @@ module.exports = db => {
       .then(data => {
         if (data.rows.length === 0) {
           // FIXME: we need to change the below link to 404
-          res.redirect(303, "/error/404");
+          res.redirect(303, "/error/404/");
         }
       })
       .catch(err => {

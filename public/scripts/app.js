@@ -11,7 +11,7 @@ $(() => {
         .find(".form__buttons")
         .before(
           $("<input />")
-            .attr("id", "option" + optionId.toString())
+            .attr("name", "option_" + optionId.toString())
             .attr("type", "textarea")
             .attr("placeholder", "Option")
             .addClass("form__option")
@@ -22,7 +22,7 @@ $(() => {
 
   // target the submit button, on submit, manually submit the form
   $("#form__submit").click(function() {
-    console.log($("#form").serialize());
+    // console.log($("#form").serialize());
     $.post(
       "/",
       $("#form").serialize(),

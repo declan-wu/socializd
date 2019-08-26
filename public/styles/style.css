@@ -21,6 +21,21 @@ body {
   color: #fff;
 
 }
+
+.poll-option {
+  border: none;
+  background: rgba(255, 255, 255, .2);
+  height: auto;
+  padding: 15px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 36px;
+  color: #fff;
+  outline: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
 .container-fluid {
     padding: 0px;
 }

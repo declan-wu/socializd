@@ -55,7 +55,8 @@ module.exports = db => {
   router.post("/:id", (req, res) => {
     const pollId = req.params.id;
     const voterId = req.session.voterId;
-    const options = req.body.optionsPos.reverse();
+    const options = req.body.optionsPos;
+
     let query_string = `
       INSERT INTO rankings(voter_id, poll_id, option_id, relative_points)
       VALUES `;

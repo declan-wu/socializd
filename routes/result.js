@@ -21,9 +21,9 @@ module.exports = db => {
       for (let row of data.rows) {
         ret.push([row.name, Number(row.total_points)]);
       }
-      console.log(ret);
+      // console.log(ret);
       temp_var = { what: ret };
-      res.render("result", temp_var);
+      res.render("resultcopy", temp_var);
 
       // res.render("result", { option_1: [10, 10, 1], option_2: 4, option_3: 5 });
     } catch (e) {

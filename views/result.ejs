@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,61 +26,30 @@
     <div class="bar-container"></div>
 
     <script>
-      // Instantiate bar chart and container
-      // const { select, selectAll } = require('d3-selection');
-      const barChart = britecharts.bar();
-      const container = d3.select(".bar-container");
-      const donutChart = britecharts.donut();
+        // Instantiate bar chart and container
+        // const { select, selectAll } = require('d3-selection');
+        const barChart = britecharts.bar();
+        const container = d3.select(".bar-container");
+        // const donutChart = britecharts.donut();
 
-      // console.log(what);
+        // console.log(what);
 
-      // Create Dataset with proper shape
-      // TODO: WHAT THE FUCK IS WRONG WITH EJS!!!!!!
+        // Create Dataset with proper shape
+        // TODO:  EJS!!!!!!
 
       const barData = [
-        { name: "<%= what[0][0] %>", value: <%= what[0][1] %> },
-        { name: "<%= what[1][0] %>", value: <%= what[1][1] %> },
-        // { name: "<%= what[2][0] %>", value: <%= what[2][1] %> },
-        // { name: "<%= what[3][0] %>", value: <%= what[3][1] %> },
-        // { name: "<%= what[4][0] %>", value: <%= what[4][1] %> }
-      ];
+          { name: "<%= what[0][0] %>", value: <%= what[0][1] %> },
+          { name: "<%= what[1][0] %>", value: <%= what[1][1] %> }
+        ];
 
-      // Configure chart
-      barChart
-        .margin({ left: 100 })
-        .isHorizontal(true)
-        .height(400)
-        .width(600);
+        // Configure chart
+        barChart
+          .margin({ left: 100 })
+          .isHorizontal(true)
+          .height(400)
+          .width(600);
 
-      container.datum(barData).call(barChart);
-
-
-      // const dataset = [
-      //     { name: "<%= what[0][0] %>", value: <%= what[0][1] %> },
-      //     { name: "<%= what[1][0] %>", value: <%= what[1][1] %> },
-      //     { name: "<%= what[2][0] %>", value: <%= what[2][1] %> },
-      //     { name: "<%= what[3][0] %>", value: <%= what[3][1] %> },
-      //     { name: "<%= what[4][0] %>", value: <%= what[4][1] %> }
-      //   ];
-      // const containerWidth = 600;
-
-      // donutChart
-      //     .isAnimated(true)
-      //     .highlightSliceById(2)
-      //     // .width(containerWidth)
-      //     .width(containerWidth)
-      //     .height(containerWidth)
-      //     .externalRadius(containerWidth / 2.5)
-      //     .internalRadius(containerWidth / 5)
-      //     .on('customMouseOver', function (data) {
-      //       legendChart.highlight(data.data.id);
-      //     })
-      //     .on('customMouseOut', function () {
-      //       legendChart.clearHighlight();
-      //     });
-      // let donutContainer = d3.select('.bar-container');
-      // donutContainer.datum(dataset).call(donutChart);
-      // donutContainer.datum(dataset).call(legendChart);
+        container.datum(barData).call(barChart);
     </script>
   </body>
 </html>

@@ -8,6 +8,8 @@ body {
 body {
   position: relative;
   background-color: #3498db;
+  padding: 0;
+  margin: 0;
 }
 
 .red {
@@ -68,8 +70,7 @@ body {
   background-color: #2ecc71;
   border: none;
 }
-.site-wrapper-inner {
-}
+
 .cover-container {
   margin-left: auto;
   margin-right: auto;
@@ -95,8 +96,6 @@ body {
   position: absolute;
   bottom: 5%;
   left: 5%;
-}
-.activate {
 }
 
 .form-group {color:#fff; position:relative}
@@ -168,10 +167,6 @@ body {
   box-sizing: border-box;
 }
 
-body {
-  padding: 0;
-  margin: 0;
-}
 
 #notfound {
   position: relative;

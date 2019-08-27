@@ -63,7 +63,7 @@ module.exports = db => {
         poll_id
       );
       // res.redirect(303, `/result/${poll_id}`);
-      res.redirect(303, `/`);
+      res.send({ poll_id });
     } catch (err) {
       console.log(err);
       // res.status(500).json({ error: err.message });

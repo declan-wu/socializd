@@ -8,6 +8,7 @@ Socializd is developed in Node.js with Express for backend, and using EJS, Jquer
 - [Links to project management](https://trello.com/b/EuCSEUBn/socializd)
 - [Links to ERD](https://drive.google.com/file/d/1gZUOXyZZURhFwnGKsJqB_tUAejgiRzZ6/view?usp=sharing)
 - `psql -h localhost -p 5432 -U labber midterm` to access database
+- this command to push local db to heroku `PGUSER=labber PGPASSWORD=labber heroku pg:push midterm DATABASE_URL --app socializd`
 
 ## Getting Started
 
@@ -25,7 +26,6 @@ In order to get started with this project, you need to run `npm install` to inst
 7. Run the server: `npm run local`
   - Note: nodemon is used, so you should not have to restart your server
 8. Visit `http://localhost:8080/`
-   
   
 Then navigate to `http://localhost:8080` to view the Socializd app. 
 

@@ -28,7 +28,6 @@ module.exports = db => {
     // retrieve data from the form
     const poll_title = req.body.poll_title;
     const email = req.body.email;
-    console.log(req.body);
     const option_names = [];
     for (let option in req.body) {
       if (option.includes("option")) {
@@ -65,8 +64,7 @@ module.exports = db => {
       // res.redirect(303, `/result/${poll_id}`);
       res.send({ poll_id });
     } catch (err) {
-      console.log(err);
-      // res.status(500).json({ error: err.message });
+      res.status(500).json({ error: err.message });
     }
   });
   return router;

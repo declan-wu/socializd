@@ -1,9 +1,5 @@
 $(() => {
-  // Jquery for the initial polling form
-  //
-  // Counter to keep track of ids of textareas
   let optionId = 3;
-
   $(".option-fields").on("keyup", "input", function(event) {
     event.preventDefault();
 
@@ -29,7 +25,6 @@ $(() => {
 
   // target the submit button, on submit, manually submit the form
   $("#form__submit").click(function() {
-    // console.log($("#form").serialize());
     $.post(
       "/",
       $("#form").serialize(),

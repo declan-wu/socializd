@@ -61,7 +61,6 @@ module.exports = db => {
   });
 
   router.post("/:id", (req, res) => {
-    console.log(req.body);
     const pollId = req.params.id;
     const voterId = req.session.voterId;
     const options = req.body.optionsPos.reverse();

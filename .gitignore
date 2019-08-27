@@ -6,9 +6,9 @@ node_modules/
 .DS_Store
 .editorconfig
 .eslintrc.json
-./app.json
-./package-lock.json
-./Procfile
-./dumpfile
-./midterm.dump
+app.json
+package-lock.json
+Procfile
+dumpfile
+midterm.dump
 

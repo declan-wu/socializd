@@ -9,6 +9,7 @@ Socializd is developed in Node.js with Express for backend, and using EJS, Jquer
 - [Links to ERD](https://drive.google.com/file/d/1gZUOXyZZURhFwnGKsJqB_tUAejgiRzZ6/view?usp=sharing)
 - `psql -h localhost -p 5432 -U labber midterm` to access database
 - this command to push local db to heroku `PGUSER=labber PGPASSWORD=labber heroku pg:push midterm DATABASE_URL --app socializd`
+- to access heroku database: `heroku pg:psql`
 
 ## Getting Started
 

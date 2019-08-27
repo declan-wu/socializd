@@ -56,7 +56,12 @@ module.exports = db => {
       option_string += ";";
       // insert into options (poll_id, name) VALUES (1, 'name'), (1, 'name')
       const option_res = await db.query(option_string, option_params);
-      sendEmail([email], `localhost:8080/poll/${poll_id}`);
+      sendEmail(
+        [email],
+        moment().format("MMMM"),
+        moment().format("D"),
+        poll_id
+      );
       // res.redirect(303, `/result/${poll_id}`);
       res.redirect(303, `/`);
     } catch (err) {

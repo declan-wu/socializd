@@ -2,7 +2,9 @@ const nodemailer = require("nodemailer");
 
 const sendEmail = async function(
   emails,
-  link = "www.google.com",
+  month,
+  date,
+  poll_id,
   admin_auth = { user: "socializd.app@gmail.com", pass: "Socializd123!" }
 ) {
   let testAccount = await nodemailer.createTestAccount();
@@ -121,10 +123,10 @@ a[x-apple-data-detectors] {
                   <td width="196" align="center" style="padding:0;Margin:0;">
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:3px;background-color:#FFFFFF;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
                      <tr style="border-collapse:collapse;">
-                      <td style="padding:0;Margin:0;padding-bottom:5px;padding-top:10px;border-radius:3px 3px 0 0;" bgcolor="#ff0000" align="center"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#FFFFFF;">AUGUST</p></td>
+                      <td style="padding:0;Margin:0;padding-bottom:5px;padding-top:10px;border-radius:3px 3px 0 0;" bgcolor="#ff0000" align="center"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#FFFFFF;">${month}</p></td>
                      </tr>
                      <tr style="border-collapse:collapse;">
-                      <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:48px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:72px;color:#444444;">26</p></td>
+                      <td align="center" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:15px;padding-right:15px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:48px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:72px;color:#444444;">${date}</p></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -157,10 +159,10 @@ a[x-apple-data-detectors] {
                       <td esdev-links-color="#b7bdc9" align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#B7BDC9;">Your poll has been created. Please click the link below to see your poll results or share the link below with your friends&nbsp;</p></td>
                      </tr>
                      <tr style="border-collapse:collapse;">
-                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="${link}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Poll Results</a></span></td>
+                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="https://socializd.herokuapp.com/result/${poll_id}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Poll Results</a></span></td>
                      </tr>
                      <tr style="border-collapse:collapse;">
-                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:25px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="${link}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">${link}</a></span></td>
+                      <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:25px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="https://socializd.herokuapp.com/poll/${poll_id}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Vote Now</a></span></td>
                      </tr>
                    </table></td>
                  </tr>

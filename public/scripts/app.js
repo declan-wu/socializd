@@ -4,7 +4,7 @@ $(() => {
   // Counter to keep track of ids of textareas
   let optionId = 3;
 
-  $('.option-fields').on("keyup", "input", function(event) {
+  $(".option-fields").on("keyup", "input", function(event) {
     event.preventDefault();
 
     if (event.which === 13 && optionId <= 5) {
@@ -34,14 +34,10 @@ $(() => {
       "/",
       $("#form").serialize(),
       function(data) {
-        //... do something with response from server
-        // maybe trigger the thank you page
+        const poll_id = data.poll_id;
+        $("#copyLink").prop("value", `${poll_id}`);
       },
       "json" // I expect a JSON response
     );
   });
-
-
 });
-
-

@@ -89,7 +89,7 @@ a[x-apple-data-detectors] {
                       <td align="center" style="padding:0;Margin:0;padding-bottom:25px;padding-top:40px;"><img src="https://skzbd.stripocdn.email/content/guids/CABINET_6da9f790c40cffd3eab88241eb6c0866/images/83611566831987376.png" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;" alt="Logo" title="Logo" width="186"></td>
                      </tr>
                      <tr style="border-collapse:collapse;">
-                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:30px;"><h1 style="Margin:0;line-height:48px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:40px;font-style:normal;font-weight:bold;color:#FFFFFF;">Your Event is Created!</h1></td>
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:30px;"><h1 style="Margin:0;line-height:48px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:40px;font-style:normal;font-weight:bold;color:#FFFFFF;">Your Poll Has Been Created!</h1></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -154,7 +154,7 @@ a[x-apple-data-detectors] {
                   <td width="600" valign="top" align="center" style="padding:0;Margin:0;">
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;">
                      <tr style="border-collapse:collapse;">
-                      <td esdev-links-color="#b7bdc9" align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#B7BDC9;">Your event has been created. Please click the link below to visit poll results or share the link below to your&nbsp;</p></td>
+                      <td esdev-links-color="#b7bdc9" align="center" style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#B7BDC9;">Your poll has been created. Please click the link below to see your poll results or share the link below with your friends&nbsp;</p></td>
                      </tr>
                      <tr style="border-collapse:collapse;">
                       <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px;"><span class="es-button-border" style="border-style:solid;border-color:#75B6C9;background:#75B6C9;border-width:1px;display:inline-block;border-radius:28px;width:auto;"><a href="${link}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;color:#FFFFFF;border-style:solid;border-color:#75B6C9;border-width:10px 25px;display:inline-block;background:#75B6C9;border-radius:28px;font-weight:normal;font-style:normal;line-height:22px;width:auto;text-align:center;">Poll Results</a></span></td>

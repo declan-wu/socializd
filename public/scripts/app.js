@@ -38,6 +38,10 @@ $(() => {
         $("#copyLink").html(`<em id = "lovely">
           https://socializd.herokuapp.com/poll/${poll_id}
           </em >`);
+        $("#lovely-form").attr(
+          "action",
+          `https://socializd.herokuapp.com/poll/${poll_id}`
+        );
       },
       "json" // I expect a JSON response
     );

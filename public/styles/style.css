@@ -12,6 +12,22 @@ body {
   margin: 0;
 }
 
+.register-login-btns {
+  position: absolute;
+  right: 1em;
+}
+
+.register-login-btns button {
+  background-color: #e1523d;
+  padding: 2em;
+  font-size: 1.2em;
+}
+
+#loginModal
+.modal-content {
+  color: #0b3954;
+}
+
 .red {
   background-color: #e1523d;
 }

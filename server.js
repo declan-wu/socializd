@@ -39,10 +39,16 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
+
+// const dashboard = require('./routes/dashboard');
 const indexRoutes = require("./routes/index");
 const pollRoutes = require("./routes/poll");
 const resultRoutes = require("./routes/result");
 const errorRoutes = require("./routes/error");
+
+// Landing page
+// app.use("/", landingRoutes(db));
+
 // Home page
 app.use("/", indexRoutes(db));
 

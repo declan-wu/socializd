@@ -35,7 +35,13 @@ $(() => {
       $("#form").serialize(),
       function(data) {
         const poll_id = data.poll_id;
-        $("#copyLink").prop("value", `${poll_id}`);
+        $("#copyLink").html(`<button
+          class= "btn btn-lg btn-success"
+          id = "copyLink"
+          style = "margin:20px;"
+          >
+          https://socializd.herokuapp.com/poll/${poll_id}
+          </button >`);
       },
       "json" // I expect a JSON response
     );

@@ -5,6 +5,10 @@ node_modules/
 *.sqlite3
 .DS_Store
 .editorconfig
-app.json
-package-lock.json
-Procfile
+.eslintrc.json
+./app.json
+./package-lock.json
+./Procfile
+./dumpfile
+./midterm.dump
+

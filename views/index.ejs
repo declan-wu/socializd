@@ -2,7 +2,16 @@
 <html lang="en">
   <head>
     <% include partials/_head %>
-    <title>Socializd -</title>
+    <title>Socializd</title>
+    <script>
+      function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+      }
+    </script>
   </head>
 
   <body>
@@ -105,11 +114,22 @@
         Thanks for your Submission! Here is your link
       </h1>
       <!--  GET LINK-->
-      <form action="https://socializd.herokuapp.com/poll/<%= count %>"</form>`>
-        <button class="btn btn-lg btn-success" style="margin:20px;">
+      <form action="/">
+        <button
+          class="btn btn-lg btn-success"
+          id="copyLink"
+          style="margin:20px;"
+        >
           https://socializd.herokuapp.com/poll/<%= count %>
         </button>
       </form>
+      <button
+        class="btn btn-lg btn-success"
+        style="margin:20px;"
+        onclick="copyToClipboard('#copyLink')"
+      >
+        Copy URL
+      </button>
     </div>
 
     <% include partials/_footer %>

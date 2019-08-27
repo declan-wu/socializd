@@ -276,28 +276,7 @@ body {
   background: #211b19;
 }
 
-@media only screen and (max-width: 767px) {
-  .notfound .notfound-404 h1 {
-    font-size: 148px;
-  }
-}
 
-@media only screen and (max-width: 480px) {
-  .notfound .notfound-404 {
-    height: 148px;
-    margin: 0px auto 10px;
-  }
-  .notfound .notfound-404 h1 {
-    font-size: 86px;
-  }
-  .notfound .notfound-404 h2 {
-    font-size: 16px;
-  }
-  .notfound a {
-    padding: 7px 15px;
-    font-size: 14px;
-  }
-}
 
 @media only screen and (max-width: 767px) {
   .notfound .notfound-404 h1 {
@@ -341,5 +320,8 @@ body {
   }
   .thanks {
     width: 400px;
+  }
+  #copyLink {
+    white-space: normal; overflow-wrap: break-word; width: 100%; margin-top: 0.2em;
   }
 }

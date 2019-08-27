@@ -23,8 +23,11 @@ body {
   font-size: 1.2em;
 }
 
-#loginModal
-.modal-content {
+.modal-body {
+  background-color: #0b3954;
+}
+
+#email-label {
   color: #0b3954;
 }
 
@@ -345,3 +348,4 @@ body {
     padding-top: inherit;
   }
 }
+

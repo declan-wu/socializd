@@ -25,7 +25,7 @@ module.exports = db => {
 
   // POST home page for creating a poll
   router.post("/", async (req, res) => {
-    // retrieve data from the from
+    // retrieve data from the form
     const poll_title = req.body.poll_title;
     const email = req.body.email;
     console.log(req.body);

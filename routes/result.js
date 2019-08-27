@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const moment = require("moment");
 
 module.exports = db => {
   router.get("/:id", async (req, res) => {
@@ -32,7 +33,8 @@ module.exports = db => {
       const data_date_title = await db.query(query_date_title, query_params);
       const options_data = await db.query(query_string, query_params);
       const options = [];
-      const created_date = data_date_title.rows[0].created_date;
+      const created_date = moment(data_date_title.rows[0].created_date);
+      const formatted_date = created_date.format("MMMM Do YYYY");
       const poll_title = data_date_title.rows[0].title;
 
       for (let row of options_data.rows) {
@@ -41,10 +43,10 @@ module.exports = db => {
 
       temp_var = {
         what: options,
-        created_date: created_date,
+        created_date: formatted_date,
         poll_title: poll_title
       };
-      res.render("resultcopy", temp_var);
+      res.render("result", temp_var);
     } catch (e) {
       console.error(e);
     }

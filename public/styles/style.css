@@ -116,7 +116,7 @@ body {
   padding: 25px;
   margin-left: -10px;
   width: 400px;
-  position: absolute;
+  position: fixed;
 }
 .nxt {
   position: absolute;

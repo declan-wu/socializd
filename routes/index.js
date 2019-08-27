@@ -28,7 +28,7 @@ module.exports = db => {
     // retrieve data from the form
     const poll_title = req.body.poll_title;
     const email = req.body.email;
-    console.log(req.body);
+
     const option_names = [];
     for (let option in req.body) {
       if (option.includes("option")) {

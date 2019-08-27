@@ -42,6 +42,8 @@ app.use(express.static("public"));
 
 // const dashboard = require('./routes/dashboard');
 const indexRoutes = require("./routes/index");
+// const registerRoutes = require("./routes/register");
+// const dashboardRoutes = require("./routes/dashboard");
 const pollRoutes = require("./routes/poll");
 const resultRoutes = require("./routes/result");
 const errorRoutes = require("./routes/error");
@@ -51,6 +53,12 @@ const errorRoutes = require("./routes/error");
 
 // Home page
 app.use("/", indexRoutes(db));
+
+// Register route
+// app.use("/register", registerRoutes(db));
+
+// Dashboard page
+// app.use("/dashboard", registerRoutes(db));
 
 // Polling page
 app.use("/poll", pollRoutes(db));

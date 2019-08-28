@@ -5,7 +5,7 @@ const moment = require("moment");
 module.exports = db => {
   router.get('/', (req, res) => {
     // const userId = req.session.userId;
-    const userId = 2;
+    const userId = 1;
 
     const user_query_string = `
       SELECT users.name, polls.title as poll_title, polls.id as poll_id, created_date
@@ -35,10 +35,6 @@ module.exports = db => {
         res.render("dashboard", renderVars);
       })
       .catch(err => console.error(err));
-
-    // get poll titles
-    // get count number of visitors to each poll
-    // get poll id -- get poll url
   });
 
   return router;

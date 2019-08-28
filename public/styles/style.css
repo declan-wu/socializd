@@ -241,6 +241,18 @@ body {
   color:black;
 }
 
+.donut {
+  float:right;
+  height: 75%;
+  width: 75%;
+}
+
+.js-donut-chart-container {
+  position: absolute;
+  right: 12.5em;
+  top: 6.5em;
+}
+
 #notfound {
   position: relative;
   height: 100vh;

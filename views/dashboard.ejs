@@ -34,18 +34,18 @@
           <tr>
             <td><%= pollTitles[i] %></td>
             <td><%= createdDates[i]%></td>
-            <td><a href="/result/<%= pollIds[i] %>" method="GET">View Poll</a></td>
+            <!-- <td><a href="/result/<%= pollIds[i] %>" method="GET" class="view-poll">View Poll</a></td> -->
+            <td><a href="#" id="<%= pollIds[i] %>">View Poll</a></td>
           </tr>
         <% } %>
       </tbody>
     </table>
   </section>
 
-  <section class="graph-view">
-    
+  <section class="view-graph">
+    <div class="donut"></div>
   </section>
 
   <% include ./partials/_footer %>
-  <script src="../public/scripts/dashboard.js"></script>
 </body>
 </html>

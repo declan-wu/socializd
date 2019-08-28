@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 
 module.exports = db => {
   router.post("/", (req, res) => {
-
     const name = req.body.name;
     const email = req.body.email;
     const password = bcrypt.hashSync(req.body.password, 10);
@@ -16,16 +15,19 @@ module.exports = db => {
       RETURNING *;
     `;
 
+    // check if user email exists already; if it does then redirect
+    // otherwise create new user
+
     // insert new user into database, set cookie session to userId
     // redirect to dashboard
     db.query(query_string, query_params)
-      .then(userId => {
-        console.log(userId);
+      .then(data => {
+        console.log(data.rows[0]);
         // req.session.userId = userId;
+        res.redirect(303, "/dashboard");
       })
-      .then(res.redirect(303, 'dashboard'))
       .catch(err => console.log(err));
-  });
 
+  });
   return router;
 };

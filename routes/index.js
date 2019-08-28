@@ -34,6 +34,7 @@ module.exports = db => {
         option_names.push(req.body[option]);
       }
     }
+
     const admin_id = 1;
     const created_date = moment().format("YYYY-MM-DD");
     const query_params = [admin_id, created_date, poll_title];

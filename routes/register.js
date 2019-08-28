@@ -9,24 +9,35 @@ module.exports = db => {
     const email = req.body.email;
     const password = bcrypt.hashSync(req.body.password, 10);
 
-    // if email exists in db
-
-    // then shake input and show notification that they're already registered
-
-    // otherwise insert them into the db and set their userId/cookie session to id in db
-    const query_params = [name, email, password];
-    const query_string = `
-      INSERT INTO users (name, email, password) VALUES ($1, $2, $3)
-      RETURNING *;
+    const email_query_string = `
+      SELECT * FROM users WHERE email = $1
     `;
+    const email_query_params = [email];
 
-    // insert new user into database, set cookie session to userId
-    // redirect to dashboard
-    db.query(query_string, query_params)
+    db.query(email_query_string, email_query_params)
       .then(data => {
-        console.log(data.rows[0]);
-        // req.session.userId = userId;
-        res.redirect(303, "/dashboard");
+        // if email exists in db
+        if (data.rows[0]) {
+          // TODO: then shake input and show notification that they're already registered
+          console.log('email already exists in db');
+          res.redirect(303,'/');
+        } else {
+          const insert_new_user_params = [name, email, password];
+          const insert_new_user_string = `
+            INSERT INTO users (name, email, password) VALUES ($1, $2, $3)
+            RETURNING *;
+          `;
+
+          // insert new user into database, set cookie session to userId
+          // redirect to dashboard
+          db.query(insert_new_user_string, insert_new_user_params)
+            .then(data => {
+              console.log(data.rows[0]);
+              // req.session.userId = userId;
+              res.redirect(303, "/dashboard");
+            })
+            .catch(err => console.log(err));
+        }
       })
       .catch(err => console.log(err));
 

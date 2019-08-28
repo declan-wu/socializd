@@ -14,7 +14,7 @@ module.exports = db => {
     // look for the email in the db
     db.query(query_string, query_params)
       .then(data => {
-        //if userId is null
+        //if user exists
         if (data.rows[0]) {
           const hashed_password = data.rows[0].password;
           const inputPassword = req.body.password;
@@ -38,6 +38,7 @@ module.exports = db => {
             .catch(err => console.error(err));
 
         } else {
+          // user does not exist
           //TODO:email input should shake and user should be told to register via notification
           console.log('email not found');
           res.redirect(303, "/");

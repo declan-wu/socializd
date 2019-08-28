@@ -1,3 +1,5 @@
+GRANT USAGE ON SCHEMA public TO labber;
+
 DROP TABLE IF EXISTS voters CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS polls CASCADE;
@@ -13,7 +15,7 @@ CREATE TABLE voters (
 
 CREATE TABLE users (
   id serial PRIMARY KEY NOT NULL,
-  poll_id integer not null,
+  poll_id integer,
   name VARCHAR(255) NOT NULL,
   email text NOT NULL,
   password VARCHAR(255)
@@ -40,3 +42,5 @@ CREATE TABLE rankings (
   PRIMARY KEY (voter_id, poll_id, option_id)
 );
 
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO labber;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO labber;

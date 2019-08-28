@@ -324,4 +324,8 @@ body {
   #copyLink {
     white-space: normal; overflow-wrap: break-word; width: 100%; margin-top: 0.2em;
   }
+  .head {
+    text-align: center;
+    padding-top: inherit;
+  }
 }

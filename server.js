@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const ENV = process.env.ENV || "development";
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -43,6 +43,7 @@ app.use(express.static("public"));
 // const dashboard = require('./routes/dashboard');
 const indexRoutes = require("./routes/index");
 const registerRoutes = require("./routes/register");
+const loginRoutes = require("./routes/login");
 const dashboardRoutes = require("./routes/dashboard");
 const pollRoutes = require("./routes/poll");
 const resultRoutes = require("./routes/result");
@@ -56,6 +57,9 @@ app.use("/", indexRoutes(db));
 
 // Register route
 app.use("/register", registerRoutes(db));
+
+// Login route
+app.use("/login", loginRoutes(db));
 
 // Dashboard page
 app.use("/dashboard", dashboardRoutes(db));

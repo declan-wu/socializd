@@ -2,11 +2,50 @@
 <html lang="en">
 <head>
   <% include ./partials/_head %>
+  <!-- <link rel="stylesheet" href="dashboard.css"> -->
   <title>User Dashboard</title>
 </head>
 <body>
+  <!-- TODO: REPLACE WITH OTHER HEADER / IF USER LOGGED IN OR NOT DISPLAY LOGOUT -->
+  <header>
+    <h1 class="h1-header animated bounceInLeft">SOCIALIZD</h1>
+    <div class = "logout-btn">
+      <form method="POST" action="/logout">
+        <button class="btn" type="submit">LOGOUT</button>
+      </form>
+    </div>
+    <div class="username-header">
+      <p>HELLO <%= username.toUpperCase() %>!</p>
+      
+    </div>
+  </header>
 
+  <section class="polls-table">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Poll Title</th>
+          <th>Date Created</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i=0; i < pollTitles.length; i++) { %>
+          <tr>
+            <td><%= pollTitles[i] %></td>
+            <td><%= createdDates[i]%></td>
+            <td><a href="/result/<%= pollIds[i] %>" method="GET">View Poll</a></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </section>
 
-<% include ./partials/_footer %>
+  <section class="graph-view">
+    
+  </section>
+
+  <% include ./partials/_footer %>
+  <script src="../public/scripts/dashboard.js"></script>
 </body>
 </html>

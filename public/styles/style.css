@@ -12,11 +12,13 @@ body {
   margin: 0;
 }
 
+.logout-btn,
 .register-login-btns {
   position: absolute;
   right: 1em;
 }
 
+.logout-btn button,
 .register-login-btns button {
   background-color: #e1523d;
   padding: 2em;
@@ -215,6 +217,28 @@ body {
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+/* Dashboard css */
+.username-header {
+  position: absolute;
+  top: 10em;
+  left: 3.7em;
+}
+
+.username-header p {
+  font-size: 3em;
+}
+
+.polls-table {
+  position:absolute;
+  top: 15em;
+  margin-left: 2.5em;
+  font-size: 2rem;
+}
+
+.polls-table a {
+  color:black;
 }
 
 #notfound {

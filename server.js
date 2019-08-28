@@ -44,6 +44,7 @@ app.use(express.static("public"));
 const indexRoutes = require("./routes/index");
 const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
+const logoutRoutes = require("./routes/logout");
 const dashboardRoutes = require("./routes/dashboard");
 const pollRoutes = require("./routes/poll");
 const resultRoutes = require("./routes/result");
@@ -60,6 +61,9 @@ app.use("/register", registerRoutes(db));
 
 // Login route
 app.use("/login", loginRoutes(db));
+
+// Logout route
+app.use("/logout", logoutRoutes());
 
 // Dashboard page
 app.use("/dashboard", dashboardRoutes(db));

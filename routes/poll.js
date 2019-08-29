@@ -8,7 +8,6 @@ module.exports = db => {
     db.query(poll_id_query_string, [Number(req.params.id)])
       .then(data => {
         if (data.rows.length === 0) {
-          // FIXME: we need to change the below link to 404
           res.redirect(303, "/error/404/");
         }
       })
@@ -18,24 +17,10 @@ module.exports = db => {
 
     // check if the voter has already voted by checking if the session cookie has property called: poll_id;
     // if it has poll_id, then he voted, redirect; else: set the cookie.poll_id to be true, and then insert voter to db
-
     if (req.session.hasOwnProperty(req.params.id)) {
-      // FIXME: need to be you have already voted page
       res.redirect(303, "/error/accessFailed");
       return;
-    } else {
-      req.session[req.params.id] = true;
-      const voterQuery_string = `
-      INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;`;
-
-      db.query(voterQuery_string)
-        .then(data => {
-          const voterId = data.rows[0].id;
-          req.session.voterId = voterId;
-        })
-        .catch(err => console.log(err));
     }
-
     // query database to retrieve poll title, date, options, etc
     const poll_id = req.params.id;
     const query_params = [poll_id];
@@ -61,6 +46,17 @@ module.exports = db => {
   });
 
   router.post("/:id", (req, res) => {
+    // to set the session cookie after voter has voted.
+    req.session[req.params.id] = true;
+    const voterQuery_string = `
+      INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;`;
+    db.query(voterQuery_string)
+      .then(data => {
+        const voterId = data.rows[0].id;
+        req.session.voterId = voterId;
+      })
+      .catch(err => console.log(err));
+
     const pollId = req.params.id;
     const voterId = req.session.voterId;
     const options = req.body.optionsPos.reverse();

@@ -3,7 +3,7 @@
 <head>
   <% include ./partials/_head %>
   <!-- <link rel="stylesheet" href="dashboard.css"> -->
-  <title>User Dashboard</title>
+  <title><%= username %>'s Dashboard</title>
 </head>
 <body>
   <!-- TODO: REPLACE WITH OTHER HEADER / IF USER LOGGED IN OR NOT DISPLAY LOGOUT -->
@@ -15,7 +15,7 @@
       </form>
     </div>
     <div class="username-header">
-      <p>HELLO <%= username.toUpperCase() %>!</p>
+      <p>HELLO, <%= username.toUpperCase() %>!</p>
       
     </div>
   </header>
@@ -24,8 +24,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Poll Title</th>
-          <th>Date Created</th>
+          <th>POLL TITLE</th>
+          <th>DATE CREATED</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -36,6 +37,7 @@
             <td><%= createdDates[i]%></td>
             <!-- <td><a href="/result/<%= pollIds[i] %>" method="GET" class="view-poll">View Poll</a></td> -->
             <td><a href="#" id="<%= pollIds[i] %>">View Poll</a></td>
+            <td><a href="#" id="<%= pollIds[i] %>">Send Poll Invite</a></td>
           </tr>
         <% } %>
       </tbody>
@@ -43,7 +45,17 @@
   </section>
 
   <section class="view-graph">
-    <div class="donut"></div>
+    <span class="close">X</span>
+    <div class="donut">
+    </div>
+    <div class="submit-btns">
+      <form class="view-submit">
+        <button class="view-btn btn" type="submit">VIEW RESULTS</button>
+      </form>
+      <form class="delete-submit" method="POST" action="/poll/delete">
+        <button class="delete-btn btn" type="submit">DELETE POLL</button>
+      </form>
+    </div>
   </section>
 
   <% include ./partials/_footer %>

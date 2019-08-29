@@ -247,10 +247,39 @@ body {
   width: 75%;
 }
 
+.close {
+  display: none;
+  position: absolute;
+  top: 6em;
+  right:10em;
+  font-size: 1.6em;
+  z-index: 1;
+}
+
+.submit-btns {
+  position:absolute;
+  width: 20%;
+  bottom: 5em;
+  right: 19.5em;
+  display:flex;
+  justify-content: space-between;
+}
+
+.delete-btn {
+  display:none;
+}
+
+.view-btn {
+  display: none;
+  opacity: 0.9;
+  background-color: #e74c3c;
+
+}
+
 .js-donut-chart-container {
   position: absolute;
-  right: 12.5em;
-  top: 6.5em;
+  right: 8em;
+  top: 5em;
 }
 
 #notfound {

@@ -14,9 +14,8 @@
 
         <form class="form-group" method='POST' action='/poll/<%= pollId %>'>
           <div class="progress-form">
+            <h3>Help me decide: <%= pollTitle %></h3>
             <div id="draggable" data-color="#00AF66">
-              <h3>Help me decide: <%= pollTitle %></h3>
-
               <% for (let key in options) { %>
                  <div class="poll-option">
                   <%= options[key] %>

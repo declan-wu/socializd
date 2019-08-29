@@ -9,7 +9,8 @@ $(() => {
     //   .attr("action", `/result/${pollId}`)
     //   .attr("method", "GET");
 
-    $.post(`/dashboard/${pollId}`, options => {
+    $.post(`/dashboard/${pollId}`, ({options}) => {
+      console.log(options);
       let donutData = {
         data: []
       };
@@ -19,7 +20,7 @@ $(() => {
 
       function createDonutChart() {
         let donutChart = britecharts.donut(),
-          donutContainer = d3.select(".js-donut-chart-container"),
+          donutContainer = d3.select(".donut"),
           containerWidth = donutContainer.node()
             ? donutContainer.node().getBoundingClientRect().width
             : false;
@@ -31,12 +32,6 @@ $(() => {
           .height(containerWidth)
           .externalRadius(containerWidth / 2.5)
           .internalRadius(containerWidth / 5)
-          .on("customMouseOver", function(data) {
-            legendChart.highlight(data.data.id);
-          })
-          .on("customMouseOut", function() {
-            legendChart.clearHighlight();
-          });
         donutContainer.datum(donutData.data).call(donutChart);
         donutChart.highlightSliceById(3).isAnimated(true); //not working
         donutContainer.datum(donutData.data).call(donutChart);

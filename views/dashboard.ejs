@@ -29,7 +29,6 @@
             <th>POLL TITLE</th>
             <th>DATE CREATED</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -39,7 +38,6 @@
             <td><%= createdDates[i]%></td>
             <!-- <td><a href="/result/<%= pollIds[i] %>" method="GET" class="view-poll">View Poll</a></td> -->
             <td><a href="#" id="<%= pollIds[i] %>">View Poll</a></td>
-            <td><a href="#" id="<%= pollIds[i] %>">Send Poll Invites</a></td>
           </tr>
           <% } %>
         </tbody>
@@ -48,10 +46,7 @@
 
     <section class="view-graph">
       <span class="close">X</span>
-      <div
-        class="js-donut-chart-container donut-chart-container"
-        style="height:450px; width:450px; margin: auto; width: 40%;"
-      ></div>
+      <div class="donut" style="height:450px; width:450px; width: 40%;"></div>
       <div class="submit-btns">
         <form class="view-submit">
           <button class="view-btn btn" type="submit">VIEW RESULTS</button>

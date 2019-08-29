@@ -45,45 +45,44 @@ module.exports = db => {
       .catch(err => console.error(err));
   });
 
-  router.post("/:id", (req, res) => {
+  router.post("/:id", async (req, res) => {
     // to set the session cookie after voter has voted.
-    req.session[req.params.id] = true;
+    const pollId = req.params.id;
+    req.session[pollId] = true;
     const voterQuery_string = `
       INSERT INTO voters (name, email) VALUES('dummyVoter', '@') RETURNING *;`;
-    db.query(voterQuery_string)
-      .then(data => {
-        const voterId = data.rows[0].id;
-        req.session.voterId = voterId;
-      })
-      .catch(err => console.log(err));
 
-    const pollId = req.params.id;
-    const voterId = req.session.voterId;
-    const options = req.body.optionsPos.reverse();
+    try {
+      const voterData = await db.query(voterQuery_string);
+      const voterId = voterData.rows[0].id;
+      req.session.voterId = voterId;
+      const options = req.body.optionsPos.reverse();
 
-    let query_string = `
+      let query_string = `
       INSERT INTO rankings(voter_id, poll_id, option_id, relative_points)
       VALUES `;
-    const option_params = [];
-    const q_arr = [];
+      const option_params = [];
+      const q_arr = [];
 
-    for (let option of options) {
-      option_params.push(
-        option,
-        (options.indexOf(option) + 1) / options.length
-      );
-      q_arr.push(
-        `( ${voterId}, ${pollId}, $${option_params.length - 1}, $${
-          option_params.length
-        } )`
-      );
+      for (let option of options) {
+        option_params.push(
+          option,
+          (options.indexOf(option) + 1) / options.length
+        );
+        q_arr.push(
+          `( ${voterId}, ${pollId}, $${option_params.length - 1}, $${
+            option_params.length
+          } )`
+        );
+      }
+      query_string += q_arr.join(", ");
+      query_string += ";";
+
+      const rankingData = await db.query(query_string, option_params);
+      res.redirect(303, `/result/${pollId}`);
+    } catch (err) {
+      console.log(err);
     }
-    query_string += q_arr.join(", ");
-    query_string += ";";
-
-    db.query(query_string, option_params)
-      .then(res.redirect(303, `/result/${pollId}`))
-      .catch(err => console.error(err));
   });
 
   return router;

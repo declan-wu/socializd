@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% include ./partials/_header %>  
+  <% include ./partials/_head %>  
   <title>Create a new poll</title>
 </head>
 <body>
+  <!-- TODO: header if logged in -->
+  <header>
+    <h1 class="h1-header animated bounceInLeft">SOCIALIZD</h1>
+    <div class="logout-create-btn">
+      <form method="GET" action="/dashboard">
+        <button class="btn create-btn" type="submit">BACK TO DASHBOARD</button>
+      </form>
+      <form method="POST" action="/logout">
+        <button class="btn logout-btn" type="submit">LOGOUT</button>
+      </form>
+    </div>
+  </header>
+   
   <div class="table-class">
     <div class="table">
       <div class="centerUp">
-
-        <form class="form-group" method='POST' action='/poll/<%= pollId %>'>
+        <form class="form-group" method="POST" action="/">
           <div class="progress-form">
             <div id="poll-form" data-color="#00AF66">
               <h3>Please enter the options for your poll</h3>
-
               <input class="form__title" type="textarea" name="poll_title" required=""
                 placeholder="What Are You Deciding?" />
               <div class=" option-fields">

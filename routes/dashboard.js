@@ -76,5 +76,14 @@ module.exports = db => {
     }
   });
 
+  router.get("/create-poll", (req, res) => {
+    res.redirect(303, "/create-poll");
+  });
+
+  router.post("/create-poll", (req,res) => {
+    console.log(req);
+    console.log('posting...');
+  });
+
   return router;
 };

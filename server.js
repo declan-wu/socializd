@@ -46,6 +46,7 @@ const registerRoutes = require("./routes/register");
 const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
 const dashboardRoutes = require("./routes/dashboard");
+const createNewPollRoutes = require("./routes/create-poll");
 const pollRoutes = require("./routes/poll");
 const resultRoutes = require("./routes/result");
 const errorRoutes = require("./routes/error");
@@ -67,6 +68,9 @@ app.use("/logout", logoutRoutes());
 
 // Dashboard page
 app.use("/dashboard", dashboardRoutes(db));
+
+// Create poll page
+app.use("/create-poll", createNewPollRoutes(db));
 
 // Polling page
 app.use("/poll", pollRoutes(db));

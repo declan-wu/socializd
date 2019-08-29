@@ -1,15 +1,15 @@
 # Socializd :whale: :snowflake: :notes:
 
-Socializd is the decision maker that you've been looking for for long.
-Spcialize let you create a poll and generate a link to share among your friends so they could help you decide on something. 
+Socializd is the decision maker that you've been looking for all along.
+It lets you create a poll and generate a link to share among your friends, so they can help you make those important (or not so important) decisions. 
 
-This app is developed in Node.js with Express for backend, and using EJS, Jquery and Ajax to render HTML/CSS page for front end. 
+This app was developed with Node.js with Express on the back end, and with EJS, Jquery and Ajax to render HTML/CSS page on the front end. 
 
 Here is a demo for Socializd [https://socializd.herokuapp.com/](https://socializd.herokuapp.com/). 
 
 ## Getting Started
 
-In order to get started with this project, you need to run `npm install` to install all dependencies for back-end (Node.js/Express). 
+In order to get started with this project, you need to run `npm install` to install all dependencies for back end (Node.js/Express.
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
 2. Update the .env file with your correct local information 
@@ -35,7 +35,7 @@ What you need to install:
 
 #### Installing
 
-Clone the project and make sure to install all dependencies. 
+Clone the project and make sure to install all dependencies with `npm install`. 
 
 #### ERD
 - [Links to ERD](https://drive.google.com/file/d/1gZUOXyZZURhFwnGKsJqB_tUAejgiRzZ6/view?usp=sharing)
@@ -43,11 +43,16 @@ Clone the project and make sure to install all dependencies.
 
 ## Deployment
 
-This app has been deployed on Heroky. You can see a demo [here]("https://socializd.herokuapp.com/"). 
+This app has been deployed on Heroku. You can see a demo [here](https://socializd.herokuapp.com/). 
 
 ## Versioning
 
 Socializd 1.0.0
+
+## Ideas for Future Development
+* User registration and login
+* User dashboard with an instant view of result chart
+* Features: delete the poll and send email invites to friends
 
 ## Contributors
 

@@ -9,9 +9,12 @@
   <!-- TODO: REPLACE WITH OTHER HEADER / IF USER LOGGED IN OR NOT DISPLAY LOGOUT -->
   <header>
     <h1 class="h1-header animated bounceInLeft">SOCIALIZD</h1>
-    <div class = "logout-btn">
+    <div class = "logout-create-btn">
+      <form method="GET" action="/poll/create">
+        <button class="btn create-btn" type="submit">CREATE NEW POLL</button>
+      </form>
       <form method="POST" action="/logout">
-        <button class="btn" type="submit">LOGOUT</button>
+        <button class="btn logout-btn" type="submit">LOGOUT</button>
       </form>
     </div>
     <div class="username-header">
@@ -37,7 +40,7 @@
             <td><%= createdDates[i]%></td>
             <!-- <td><a href="/result/<%= pollIds[i] %>" method="GET" class="view-poll">View Poll</a></td> -->
             <td><a href="#" id="<%= pollIds[i] %>">View Poll</a></td>
-            <td><a href="#" id="<%= pollIds[i] %>">Send Poll Invite</a></td>
+            <td><a href="#" id="<%= pollIds[i] %>">Send Poll Invites</a>
           </tr>
         <% } %>
       </tbody>

@@ -12,21 +12,40 @@ body {
   margin: 0;
 }
 
-.logout-btn,
+.logout-create-btn,
 .register-login-btns {
   position: absolute;
   right: 1em;
+  display: flex;
 }
 
-.logout-btn button,
+.logout-create-btn button,
 .register-login-btns button {
   background-color: #e1523d;
   padding: 2em;
   font-size: 1.2em;
 }
 
+.login-btn,
+.create-btn {
+  margin-right: 0.5em;
+}
+
+.register-btn,
+.logout-btn {
+  margin-left: 0.5em;
+}
+
 .modal-body {
   background-color: #0b3954;
+}
+
+.modal-content {
+  color: #0b3954;
+}
+
+.modal-footer-text {
+  color: white;
 }
 
 #email-label {
@@ -259,7 +278,7 @@ body {
 .submit-btns {
   position:absolute;
   width: 20%;
-  bottom: 5em;
+  bottom: 10em;
   right: 19.5em;
   display:flex;
   justify-content: space-between;
@@ -276,10 +295,10 @@ body {
 
 }
 
-.js-donut-chart-container {
+.loaded-donut {
   position: absolute;
-  right: 8em;
-  top: 5em;
+  right: 3em;
+  bottom: 15em;
 }
 
 #notfound {

@@ -11,12 +11,14 @@ $(() => {
       $(".header-result").remove();
       $(".head").remove();
       $(".legend-container-group").remove();
+      $(".js-donut-chart-container").addClass('loaded-donut');
     });
   });
 
   $('.close').on('click', function(event) {
     $(this).hide();
     $('.view-btn').hide();
+    $('.delete-btn').hide();
     $(".donut").empty();
   });
 });

@@ -381,3 +381,7 @@ body {
   margin: 0px;
   padding-right: 2rem;
 }
+
+.arrow-cursor {
+  cursor: row-resize;
+}

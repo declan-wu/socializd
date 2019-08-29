@@ -30,7 +30,11 @@
     "twilio": "^3.33.4"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "bcrypt": "^2.0.0",
+=======
+    "bcrypt": "^3.0.6",
+>>>>>>> c65b68bad7b1b1d7862833d179617affa9f7a835
     "nodemon": "^1.19.1"
   }
 }

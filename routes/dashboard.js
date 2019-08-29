@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 const moment = require("moment");
 
 module.exports = db => {
@@ -107,6 +108,12 @@ module.exports = db => {
       console.log(e);
     }
 >>>>>>> fix/donut-data
+=======
+
+module.exports = db => {
+  router.get('/', (req, res) => {
+    res.render("dashboard");
+>>>>>>> c65b68bad7b1b1d7862833d179617affa9f7a835
   });
 
   return router;

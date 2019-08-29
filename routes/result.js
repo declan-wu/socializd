@@ -46,6 +46,7 @@ module.exports = db => {
         created_date: formatted_date,
         poll_title: poll_title
       };
+
       res.render("result", temp_var);
     } catch (e) {
       console.error(e);

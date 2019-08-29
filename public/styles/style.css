@@ -160,6 +160,7 @@ body {
   padding: 20px 60px;
   font-weight: bold;
   font-size: 24px;
+  margin-top: 30px;
 }
 
 ::-webkit-input-placeholder {
@@ -275,6 +276,7 @@ body {
   background: #211b19;
 }
 
+
 @media only screen and (max-width: 1100px) {
   .head {
     text-align: center;
@@ -304,6 +306,7 @@ body {
     padding: 20px 60px;
     font-weight: bold;
     font-size: 19px;
+    margin-top: 25px;
   }
 
   .form-group input {
@@ -324,6 +327,7 @@ body {
 }
 }
 @media only screen and (max-width: 480px) {
+
   .notfound .notfound-404 {
     height: 148px;
     margin: 0px auto 10px;
@@ -358,9 +362,7 @@ body {
     outline: 0;
     width: 100%;
   }
-  .thanks {
-    width: 400px;
-  }
+ 
   #copyLink {
     white-space: normal;
     overflow-wrap: break-word;
@@ -383,6 +385,7 @@ body {
     padding: 20px 60px;
     font-weight: bold;
     font-size: 17px;
+    margin-top: 20px;
   }
 
   .form-group input {
@@ -396,7 +399,13 @@ body {
     color: #fff;
     outline: 0;
     width: 100%;
+  
 }
+  .table {
+    display: table;
+    margin-top:70px;
+    vertical-align: middle;
+  }
   
 }
 

@@ -22,7 +22,7 @@
       <h2><%= created_date %></h2>
     </div>
     <div class="card--chart">
-      <div class="js-donut-chart-container donut-chart-container" style="height:450px; width:450px; margin: auto; width: 40%;" ></div>
+      <div class="js-donut-chart-container donut-chart-container" style="margin: auto; width: 40%; height: width*.6" ></div>
       <div class="js-legend-chart-container legend-chart-container"></div>
 
     <script>
@@ -46,6 +46,9 @@
             : false,
           legendChart = britecharts.legend(),
           legendContainer;
+
+
+
 
         donutChart
           .isAnimated(true)

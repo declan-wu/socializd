@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-<<<<<<< HEAD
 const moment = require("moment");
 
 module.exports = db => {
@@ -77,15 +76,6 @@ module.exports = db => {
     }
   });
 
-<<<<<<< HEAD
-  router.get("/create-poll", (req, res) => {
-    res.redirect(303, "/create-poll");
-  });
-
-  router.post("/create-poll", (req,res) => {
-    console.log(req);
-    console.log('posting...');
-=======
   router.post("/:id", async (req, res) => {
     const pollId = req.params.id;
     const query_params = [pollId];
@@ -107,14 +97,7 @@ module.exports = db => {
     } catch (e) {
       console.log(e);
     }
->>>>>>> fix/donut-data
-=======
-
-module.exports = db => {
-  router.get('/', (req, res) => {
-    res.render("dashboard");
->>>>>>> c65b68bad7b1b1d7862833d179617affa9f7a835
   });
-
+  
   return router;
 };

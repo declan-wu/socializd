@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 
 
 module.exports = db => {
-<<<<<<< HEAD
   router.post("/", (req, res) => {
     const email = req.body.email;
     const query_params = [email];
@@ -43,32 +42,10 @@ module.exports = db => {
           //TODO:email input should shake and user should be told to register via notification
           console.log('email not found');
           res.redirect(303, "/");
-=======
-  router.post("/register", (req, res) => {
-    const email = req.body.email;
-    const query_params = [email];
-    const query_string = `
-      SELECT password FROM users WHERE email = $1;
-    `;
-
-    db.query(query_string, query_params)
-      .then(data => {
-        const password = data.rows[0].password;
-        const checkPassword = bcrypt.compare(password, data.rows[0].password);
-
-        if (checkPassword) {
-          res.redirect(303, 'dashboard');
-        } else {
-          // TODO: error page if password is wrong
-          res.redirect('303', 'index');
->>>>>>> c65b68bad7b1b1d7862833d179617affa9f7a835
         }
       })
       .catch(err => console.error(err));
   });
-<<<<<<< HEAD
 
   return router;
-=======
->>>>>>> c65b68bad7b1b1d7862833d179617affa9f7a835
 };

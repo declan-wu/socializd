@@ -7,12 +7,23 @@ $(() => {
     $(".view-submit")
       .attr("action", `/result/${pollId}`)
       .attr("method", "GET");
-    $(".donut").load(`result/${pollId}`, function() {
-      $(".header-result").remove();
-      $(".head").remove();
-      $(".legend-container-group").remove();
-      $(".js-donut-chart-container").addClass('loaded-donut');
+
+    $.ajax({
+      type: "GET",
+      url: `/result/${pollId}`,
+      success: function(data) {
+        console.log(data);
+      }
     });
+ 
+    // $(".donut").load(`result/${pollId}`, function() {
+    //   $(".header-result").remove();
+    //   $(".head").remove();
+    //   $(".legend-container-group").remove();
+    //   $(".js-donut-chart-container").addClass('loaded-donut');
+    // });
+
+
   });
 
   $('.close').on('click', function(event) {

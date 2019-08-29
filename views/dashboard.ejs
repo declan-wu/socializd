@@ -23,44 +23,41 @@
     </div>
   </header>
 
-  <section class="polls-table">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>POLL TITLE</th>
-          <th>DATE CREATED</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% for (let i=0; i < pollTitles.length; i++) { %>
+    <section class="polls-table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>POLL TITLE</th>
+            <th>DATE CREATED</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i=0; i < pollTitles.length; i++) { %>
           <tr>
             <td><%= pollTitles[i] %></td>
             <td><%= createdDates[i]%></td>
             <!-- <td><a href="/result/<%= pollIds[i] %>" method="GET" class="view-poll">View Poll</a></td> -->
             <td><a href="#" id="<%= pollIds[i] %>">View Poll</a></td>
-            <td><a href="#" id="<%= pollIds[i] %>">Send Poll Invites</a>
           </tr>
-        <% } %>
-      </tbody>
-    </table>
-  </section>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
 
-  <section class="view-graph">
-    <span class="close">X</span>
-    <div class="donut">
-    </div>
-    <div class="submit-btns">
-      <form class="view-submit">
-        <button class="view-btn btn" type="submit">VIEW RESULTS</button>
-      </form>
-      <form class="delete-submit" method="POST" action="/poll/delete">
-        <button class="delete-btn btn" type="submit">DELETE POLL</button>
-      </form>
-    </div>
-  </section>
+    <section class="view-graph">
+      <span class="close">X</span>
+      <div class="donut" style="height:450px; width:450px; width: 40%;"></div>
+      <div class="submit-btns">
+        <form class="view-submit">
+          <button class="view-btn btn" type="submit">VIEW RESULTS</button>
+        </form>
+        <form class="delete-submit" method="POST" action="/poll/delete">
+          <button class="delete-btn btn" type="submit">DELETE POLL</button>
+        </form>
+      </div>
+    </section>
 
-  <% include ./partials/_footer %>
-</body>
+    <% include ./partials/_footer %>
+  </body>
 </html>

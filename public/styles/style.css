@@ -260,10 +260,16 @@ body {
   color:black;
 }
 
+.view-graph {
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .donut {
-  float:right;
-  height: 75%;
-  width: 75%;
+  position: absolute;
+  right: 15em;
+  top: 6.6em;
 }
 
 .close {
@@ -278,8 +284,8 @@ body {
 .submit-btns {
   position:absolute;
   width: 20%;
-  bottom: 10em;
-  right: 19.5em;
+  bottom: 4em;
+  right: 26.5em;
   display:flex;
   justify-content: space-between;
 }

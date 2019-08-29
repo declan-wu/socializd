@@ -3,7 +3,7 @@ const router = express.Router();
 const moment = require("moment");
 
 module.exports = db => {
-  router.get('/', async (req, res) => {
+  router.get("/", async (req, res) => {
     // const userId = req.session.userId;
     const userId = 1;
 
@@ -68,14 +68,15 @@ module.exports = db => {
         pollIds,
         pollTitles,
         createdDates,
+        options
       };
       res.render("dashboard", renderVars);
-      res.send(options);
     } catch (err) {
       console.error(err);
     }
   });
 
+<<<<<<< HEAD
   router.get("/create-poll", (req, res) => {
     res.redirect(303, "/create-poll");
   });
@@ -83,6 +84,29 @@ module.exports = db => {
   router.post("/create-poll", (req,res) => {
     console.log(req);
     console.log('posting...');
+=======
+  router.post("/:id", async (req, res) => {
+    const pollId = req.params.id;
+    const query_params = [pollId];
+    const query_string = `
+    SELECT options.name, SUM(rankings.relative_points) AS total_points
+    FROM rankings
+    JOIN options ON rankings.option_id = options.id
+    WHERE rankings.poll_id = $1
+    GROUP BY options.name
+    ORDER BY SUM(rankings.relative_points) DESC;`;
+    try {
+      const options_data = await db.query(query_string, query_params);
+      const options = [];
+
+      for (let row of options_data.rows) {
+        options.push([row.name, Number(row.total_points)]);
+      }
+      res.send({ options });
+    } catch (e) {
+      console.log(e);
+    }
+>>>>>>> fix/donut-data
   });
 
   return router;

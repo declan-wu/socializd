@@ -360,3 +360,24 @@ body {
   text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4), 0px 4px 7px rgba(0, 0, 0, 0.1),
     0px 9px 12px rgba(0, 0, 0, 0.1);
 }
+
+.ranking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ranking-header h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0rem;
+  margin: 0px;
+}
+
+.ranking-header h4 {
+  padding: 0px;
+  margin: 0px;
+  padding-right: 2rem;
+}

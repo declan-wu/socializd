@@ -14,7 +14,10 @@
 
         <form class="form-group" method='POST' action='/poll/<%= pollId %>'>
           <div class="progress-form">
-            <h3 class="close-and-heavy"><%= pollTitle %> <span style="font-size:1.5rem"><em>Drag and Drop to rank the options</em></span> </h3>
+            <div class='ranking-header'>
+              <h3 class="glowing"><%= pollTitle %> </h3>
+              <h4>Drag and Drop to rank the options</h4>
+            </div>
             <div id="draggable" data-color="#00AF66">
               <% for (let key in options) { %>
                 <div class="poll-option">

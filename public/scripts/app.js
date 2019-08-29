@@ -23,7 +23,7 @@ $(() => {
     $(".form__title").val("");
   });
 
-  // target the submit button, on submit, manually submit the form
+  // target the submit button, on submit, manually submit the form on index.ejs
   $("#form__submit").click(function() {
     $.post(
       "/",
@@ -41,4 +41,5 @@ $(() => {
       "json" // I expect a JSON response
     );
   });
+
 });

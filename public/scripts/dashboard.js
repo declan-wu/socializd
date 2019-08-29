@@ -5,12 +5,8 @@ $(() => {
     $(".close").show();
     $(".view-btn").show();
     $(".delete-btn").show();
-    // $(".view-submit")
-    //   .attr("action", `/result/${pollId}`)
-    //   .attr("method", "GET");
 
     $.post(`/dashboard/${pollId}`, ({options}) => {
-      console.log(options);
       let donutData = {
         data: []
       };
@@ -37,6 +33,15 @@ $(() => {
         donutContainer.datum(donutData.data).call(donutChart);
       }
       createDonutChart();
+    });
+  });
+
+  $('.view').on('click', function(event) {
+    event.preventDefault();
+    const pollId = event.target.id;
+    $.get(`/result/${pollId}`)
+    .done(function(data) {
+      console.log(data);
     });
   });
 

@@ -268,7 +268,7 @@ body {
 
 .donut {
   position: absolute;
-  right: 15em;
+  right: 5em;
   top: 6.6em;
 }
 
@@ -285,7 +285,7 @@ body {
   position:absolute;
   width: 20%;
   bottom: 4em;
-  right: 26.5em;
+  right: 16.5em;
   display:flex;
   justify-content: space-between;
 }

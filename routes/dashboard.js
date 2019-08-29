@@ -37,12 +37,14 @@ module.exports = db => {
       `;
 
       for (let i = 0; i < pollIds.length; i++) {
-        if (i === 0) {
-          options_ranking_string += '(' + `$${i + 1}, `;
+        if (pollIds.length === 1) {
+          options_ranking_string += `($${i + 1})`;
+        } else if (i === 0) {
+          options_ranking_string += `($${i + 1}, `;
         } else if (i === pollIds.length - 1) {
           options_ranking_string += `$${i + 1})`;
         } else {
-          options_ranking_string += `$${i + 1} `;
+          options_ranking_string += `$${i + 1}, `;
         }
       }
 

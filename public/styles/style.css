@@ -48,6 +48,13 @@ body {
   color: white;
 }
 
+.label-input {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1.5em;
+}
+
 #email-label {
   color: #0b3954;
 }

@@ -4,9 +4,7 @@ const moment = require("moment");
 
 module.exports = db => {
   router.get("/", async (req, res) => {
-    // const userId = req.session.userId;
-    const userId = 1;
-
+    const userId = req.session.userId;
     const user_query_string = `
       SELECT users.name, polls.title as poll_title, polls.id as poll_id, created_date
       FROM users
@@ -17,62 +15,74 @@ module.exports = db => {
     
     try {
       const userPollData = await db.query(user_query_string, user_query_params);
-      const username = userPollData.rows[0].name;
-      const pollIds = [];
-      const pollTitles = [];
-      const createdDates = [];
+      // if user has not created any polls then only get the username and pass to dashboard
+      if (userPollData.rows.length === 0) {
+        const userName_query_string = `
+          SELECT users.name FROM users
+          WHERE users.id = $1
+        `;
+        const usernameData = await db.query(userName_query_string, user_query_params);
+        const username = usernameData.rows[0].name;
+        res.render('dashboard', { username });
+      } else {
+        // otherwise, pass all the polls as vars to the dashboard
+        const username = userPollData.row[0].name;
+        const pollIds = [];
+        const pollTitles = [];
+        const createdDates = [];
 
-      for (let poll of userPollData.rows) {
-        pollIds.push(poll.poll_id);
-        pollTitles.push(poll.poll_title);
-        createdDates.push(moment(poll.created_date).format("MMMM Do YYYY"));
-      }
-
-      let options_ranking_string = `
-      SELECT polls.id as poll_id, options.name, SUM(rankings.relative_points) AS total_points
-      FROM rankings
-      JOIN options ON rankings.option_id = options.id
-      JOIN polls ON options.poll_id = polls.id
-      WHERE rankings.poll_id IN
-      `;
-
-      for (let i = 0; i < pollIds.length; i++) {
-        if (pollIds.length === 1) {
-          options_ranking_string += `($${i + 1})`;
-        } else if (i === 0) {
-          options_ranking_string += `($${i + 1}, `;
-        } else if (i === pollIds.length - 1) {
-          options_ranking_string += `$${i + 1})`;
-        } else {
-          options_ranking_string += `$${i + 1}, `;
+        for (let poll of userPollData.rows) {
+          pollIds.push(poll.poll_id);
+          pollTitles.push(poll.poll_title);
+          createdDates.push(moment(poll.created_date).format("MMMM Do YYYY"));
         }
-      }
 
-      options_ranking_string += `
-        GROUP BY polls.id, options.name
-        ORDER BY SUM(rankings.relative_points) DESC;`;
+        let options_ranking_string = `
+        SELECT polls.id as poll_id, options.name, SUM(rankings.relative_points) AS total_points
+        FROM rankings
+        JOIN options ON rankings.option_id = options.id
+        JOIN polls ON options.poll_id = polls.id
+        WHERE rankings.poll_id IN
+        `;
 
-      const optionsRankingData = await db.query(options_ranking_string, pollIds);
-      const optionsRankings = optionsRankingData.rows;
-      
-      const options = {};
-      for (let option of optionsRankings) {
-        if (options[option.poll_id]) {
-          options[option.poll_id].push([option.name, Number(option.total_points)]);
-        } else {
-          options[option.poll_id] = [];
-          options[option.poll_id].push([option.name,Number(option.total_points)]);
+        for (let i = 0; i < pollIds.length; i++) {
+          if (pollIds.length === 1) {
+            options_ranking_string += `($${i + 1})`;
+          } else if (i === 0) {
+            options_ranking_string += `($${i + 1}, `;
+          } else if (i === pollIds.length - 1) {
+            options_ranking_string += `$${i + 1})`;
+          } else {
+            options_ranking_string += `$${i + 1}, `;
+          }
         }
+
+        options_ranking_string += `
+          GROUP BY polls.id, options.name
+          ORDER BY SUM(rankings.relative_points) DESC;`;
+
+        const optionsRankingData = await db.query(options_ranking_string, pollIds);
+        const optionsRankings = optionsRankingData.rows;
+        
+        const options = {};
+        for (let option of optionsRankings) {
+          if (options[option.poll_id]) {
+            options[option.poll_id].push([option.name, Number(option.total_points)]);
+          } else {
+            options[option.poll_id] = [];
+            options[option.poll_id].push([option.name,Number(option.total_points)]);
+          }
+        }
+        
+        const renderVars = {
+          username,
+          pollIds,
+          pollTitles,
+          createdDates,
+          options
+        };
+        res.render("dashboard", renderVars);
       }
-      
-      const renderVars = {
-        username,
-        pollIds,
-        pollTitles,
-        createdDates,
-        options
-      };
-      res.render("dashboard", renderVars);
     } catch (err) {
       console.error(err);
     }

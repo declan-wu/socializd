@@ -33,16 +33,7 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <% for (let i=0; i < pollTitles.length; i++) { %>
-          <tr>
-            <td><%= pollTitles[i] %></td>
-            <td><%= createdDates[i]%></td>
-            <td><a class=".view" href="#" id="<%= pollIds[i] %>">View Poll</a></td>
-            <td><a href="/poll/<%= pollIds[i] %>" id="#">Copy Poll Link</a></td>
-          </tr>
-          <% } %>
-        </tbody>
+       
       </table>
     </section>
 

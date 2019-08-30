@@ -4,18 +4,15 @@
     <div class="modal-content">
       <div class="modal-header bg-light">
         <h5 class="modal-title" id="loginModal">Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
         <form class action="/login" method="POST" id="loginModal-details">
-          <div class="form-group">
+          <div class="form-group label-input">
             <label for="email">Email: </label>
             <input class="form-control" type="email" name="email" placeholder="@" required=""
               style="width: 300px; margin: 1em">
           </div>
-          <div class="form-group">
+          <div class="form-group label-input">
             <label for="password">Password:</label>
             <input class="form-control" type="password" name="password" placeholder="Password" required=""
               style="width: 300px; margin: 1em">
@@ -40,23 +37,20 @@
     <div class="modal-content">
       <div class="modal-header bg-warning">
         <h5 class="modal-title" id="registerModal">Register</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="modal-body">
         <form class action="/register" method="POST" id="registerModal-details">
-          <div class="form-group">
+          <div class="form-group label-input">
             <label for="name">Name: </label>
             <input class="form-control" type="textarea" name="name" placeholder="name" required=""
               style="width: 300px; margin: 1em">
           </div>
-          <div class="form-group">
+          <div class="form-group label-input">
             <label for="email">Email: </label>
             <input class="form-control" type="email" name="email" placeholder="@" required=""
               style="width: 300px; margin: 1em">
           </div>
-          <div class="form-group">
+          <div class="form-group label-input">
             <label for="password">Password:</label>
             <input class="form-control" type="password" name="password" placeholder="Password" required=""
               style="width: 300px; margin: 1em">

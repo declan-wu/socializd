@@ -8,7 +8,7 @@ module.exports = db => {
   });
 
   router.post("/", async (req, res) => {
-    // const admin_id = req.session.userId;
+    const admin_id = req.session.userId;
     const poll_title = req.body.poll_title;
     // const email = req.body.email;
     const option_names = [];
@@ -17,8 +17,7 @@ module.exports = db => {
         option_names.push(req.body[option]);
       }
     }
-
-    const admin_id = 1;
+    
     const created_date = moment().format("YYYY-MM-DD");
     const query_params = [admin_id, created_date, poll_title];
     const query_string = `

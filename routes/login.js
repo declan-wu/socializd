@@ -26,8 +26,8 @@ module.exports = db => {
             .then(rightPassword => {
               if (rightPassword) {
               //TODO: test with the cookie session uncommented
-              // req.session.userId = user_id;
-                console.log('userId =', user_id);
+                console.log('right email, right password');
+                req.session.userId = user_id;
                 res.redirect(303, '/dashboard');
               } else {
               // TODO: pop-up notification or err page that password was wrong

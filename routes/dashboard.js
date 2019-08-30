@@ -9,7 +9,8 @@ module.exports = db => {
       SELECT users.name, polls.title as poll_title, polls.id as poll_id, created_date
       FROM users
       JOIN polls ON polls.admin_id = users.id
-      WHERE users.id = $1;
+      WHERE users.id = $1
+      AND polls.active = 'true';
     `;
     const user_query_params = [userId];
     
@@ -108,6 +109,23 @@ module.exports = db => {
       res.send({ options });
     } catch (e) {
       console.log(e);
+    }
+  });
+
+  router.post("/:id/delete", async (req, res) => {
+    const pollId = req.params.id;
+    const query_string = `
+      UPDATE polls 
+      SET active = 'false'
+      WHERE polls.id = $1;
+    `;
+    const query_params = [pollId];
+
+    try {
+      const markInactive = await db.query(query_string, query_params);
+      res.redirect(303, "/dashboard");
+    } catch(e) {
+      console.error(err);
     }
   });
   

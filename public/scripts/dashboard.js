@@ -1,5 +1,5 @@
 $(() => {
-  $("a").on("click", function(event) {
+  $(".view").on("click", function(event) {
     event.preventDefault();
     const pollId = event.target.id;
     $(".close").show();
@@ -50,5 +50,17 @@ $(() => {
     $(".view-btn").hide();
     $(".delete-btn").hide();
     $(".donut").empty();
+  });
+
+  $(".copy").on("click", function(event) {
+    const link = event.target.id;
+    const tempInput = document.createElement("input");
+    tempInput.style = "position:absolute; left: -1000px; top: -1000px";
+    tempInput.value = link;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    alert('Success! Poll link copied to clipboard');
+    document.body.removeChild(tempInput);
   });
 });

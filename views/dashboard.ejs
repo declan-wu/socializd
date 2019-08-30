@@ -35,12 +35,12 @@
              </tr>
            </thead>
            <tbody>
-             <% for (let i=0; i < pollTitles.length; i++) { %>
+             <% for (let i = 0; i < pollTitles.length; i++) { %>
              <tr>
                <td><%= pollTitles[i] %></td>
                <td><%= createdDates[i]%></td>
-               <td><a class=".view" href="#" id="<%= pollIds[i] %>">View Poll</a></td>
-               <td><a href="/poll/<%= pollIds[i] %>" id="#">Copy Poll Link</a></td>
+               <td><a class="view" href="#" id="<%= pollIds[i] %>">View Poll</a></td>
+               <td><a class="copy" href="#" id="localhost:8000/poll/<%= pollIds[i] %>">Copy Poll Link</a></td>
              </tr>
              <% } %>
            </tbody>
@@ -55,17 +55,21 @@
       <span class="close">X</span>
       <div class="donut" style="height:450px; width:450px; width: 40%;"></div>
       <div class="submit-btns">
-        <div class="view">
-          <form class="view-submit" method="GET" action="/">
-            <button class="view-btn btn" type="submit">VIEW RESULTS</button>
-          </form>
-        </div>
-        <div class="delete">
-          <form class="delete-submit" method="POST" action="/poll/id/delete">
-            <button class="delete-btn btn" type="submit">DELETE POLL</button>
-          </form>
-        </div>
-      
+       
+          <% if (locals.pollIds) { %>
+            <% for (let i = 0; i < pollIds.length; i++) { %>
+              <div class="view">
+                <form class="view-submit" method="GET" action="/result/<%= pollIds[i] %>">
+                  <button class="view-btn btn" type="submit">VIEW RESULTS</button>
+                </form>
+              </div>
+              <div class="delete">
+                <form class="delete-submit" method="POST" action="/dashboard/<%= pollIds[i] %>/delete">
+                  <button class="delete-btn btn" type="submit">DELETE POLL</button>
+                </form>
+              </div>
+            <% } %>
+          <% } %>      
       </div>
     </section>
   <% include ./partials/_footer %>

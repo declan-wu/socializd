@@ -21,8 +21,8 @@ module.exports = db => {
     const created_date = moment().format("YYYY-MM-DD");
     const query_params = [admin_id, created_date, poll_title];
     const query_string = `
-      INSERT INTO polls (admin_id, created_date, title)
-      VALUES ($1, $2, $3)
+      INSERT INTO polls (admin_id, created_date, title, active)
+      VALUES ($1, $2, $3, 'true')
       RETURNING * ;`;
 
     try {
@@ -33,7 +33,7 @@ module.exports = db => {
       const q_arr = [];
       for (let option of option_names) {
         option_params.push(option);
-        q_arr.push(`( ${poll_id}, $${option_params.length} )`);
+        q_arr.push(`( ${poll_id}, $${option_params.length})`);
       }
       option_string += q_arr.join(", ");
       option_string += ";";

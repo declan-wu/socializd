@@ -249,7 +249,7 @@ body {
 .username-header {
   position: absolute;
   top: 10em;
-  left: 3.7em;
+  left: 5.7em;
 }
 
 .username-header p {
@@ -259,7 +259,7 @@ body {
 .polls-table {
   position:absolute;
   top: 15em;
-  margin-left: 2.5em;
+  margin-left: 3.8em;
   font-size: 2rem;
 }
 
@@ -275,14 +275,14 @@ body {
 
 .donut {
   position: absolute;
-  right: 5em;
+  right: 13.5em;
   top: 6.6em;
 }
 
 .close {
   display: none;
   position: absolute;
-  top: 6em;
+  top: 8em;
   right:10em;
   font-size: 1.6em;
   z-index: 1;
@@ -292,7 +292,7 @@ body {
   position:absolute;
   width: 20%;
   bottom: 4em;
-  right: 16.5em;
+  right: 24.5em;
   display:flex;
   justify-content: space-between;
 }

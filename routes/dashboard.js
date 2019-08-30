@@ -23,10 +23,10 @@ module.exports = db => {
         `;
         const usernameData = await db.query(userName_query_string, user_query_params);
         const username = usernameData.rows[0].name;
-        res.render('dashboard', { username });
+        res.render("dashboard", {username});
       } else {
         // otherwise, pass all the polls as vars to the dashboard
-        const username = userPollData.row[0].name;
+        const username = userPollData.rows[0].name;
         const pollIds = [];
         const pollTitles = [];
         const createdDates = [];

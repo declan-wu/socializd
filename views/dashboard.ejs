@@ -24,17 +24,31 @@
   </header>
 
     <section class="polls-table">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>POLL TITLE</th>
-            <th>DATE CREATED</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-       
-      </table>
+      <% if (locals.pollIds) { %>
+         <table class="table">
+           <thead>
+             <tr>
+               <th>POLL TITLE</th>
+               <th>DATE CREATED</th>
+               <th></th>
+               <th></th>
+             </tr>
+           </thead>
+           <tbody>
+             <% for (let i=0; i < pollTitles.length; i++) { %>
+             <tr>
+               <td><%= pollTitles[i] %></td>
+               <td><%= createdDates[i]%></td>
+               <td><a class=".view" href="#" id="<%= pollIds[i] %>">View Poll</a></td>
+               <td><a href="/poll/<%= pollIds[i] %>" id="#">Copy Poll Link</a></td>
+             </tr>
+             <% } %>
+           </tbody>
+         </table>
+      <% } else { %>
+        <h3>You haven't created any polls yet!</h3>
+      <% } %>
+     
     </section>
 
     <section class="view-graph">

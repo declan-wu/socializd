@@ -1,4 +1,4 @@
-# Socializd :whale: :snowflake: :notes:
+# [Socializd](https://socializd.herokuapp.com/) :whale: :snowflake: :notes:
 
 Socializd is the decision maker that you've been looking for all along.
 It lets you create a poll and generate a link to share among your friends, so they can help you make those important (or not so important) decisions. 
